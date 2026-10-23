@@ -1,0 +1,123 @@
+/* ---------- Illustration animations (SVG) ---------- */
+/* Only animated elements get a centred origin — it would also skew plain
+   transform="rotate(...)" attributes. */
+.ill [class*='ill-'] {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ill[data-paused='true'] * {
+  animation-play-state: paused !important;
+}
+
+@keyframes ill-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes ill-float-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes ill-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ill-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes ill-pop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+@keyframes ill-bar {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+@keyframes ill-march {
+  to { stroke-dashoffset: -24; }
+}
+@keyframes ill-draw {
+  0% { stroke-dashoffset: 1; }
+  35%, 80% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1; }
+}
+@keyframes ill-flip {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.08); }
+}
+@keyframes ill-drop {
+  0% { transform: translateY(-6px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(24px); opacity: 0; }
+}
+@keyframes ill-wave {
+  0%, 100% { transform: skewY(0deg); }
+  50% { transform: skewY(-9deg); }
+}
+@keyframes ill-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes ill-drag {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -10px) rotate(5deg); }
+}
+@keyframes ill-blink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes ill-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes ill-shadow {
+  0%, 100% { transform: scaleX(1); opacity: 1; }
+  50% { transform: scaleX(0.9); opacity: 0.7; }
+}
+
+.ill-float { animation: ill-float 4.5s ease-in-out infinite; }
+.ill-float-sm { animation: ill-float-sm 6s ease-in-out infinite; }
+.ill-spin { animation: ill-spin 14s linear infinite; }
+.ill-spin-rev { animation: ill-spin 10s linear infinite reverse; }
+.ill-pulse { animation: ill-pulse 2.6s ease-in-out infinite; }
+.ill-pop { animation: ill-pop 3s ease-in-out infinite; }
+.ill-bar { transform-origin: bottom; animation: ill-bar 2.8s ease-in-out infinite; }
+.ill-march { animation: ill-march 1.2s linear infinite; }
+.ill-draw { stroke-dasharray: 1; animation: ill-draw 4.5s ease-in-out infinite; }
+.ill-flip { animation: ill-flip 3.2s ease-in-out infinite; }
+.ill-drop { animation: ill-drop 1.4s linear infinite; }
+.ill-wave { transform-origin: left center; animation: ill-wave 1.8s ease-in-out infinite; }
+.ill-sway { transform-origin: bottom center; animation: ill-sway 5s ease-in-out infinite; }
+.ill-drag { animation: ill-drag 3.4s ease-in-out infinite; }
+.ill-blink { animation: ill-blink 1.6s ease-in-out infinite; }
+.ill-bounce { animation: ill-bounce 1.8s ease-in-out infinite; }
+.ill-shadow { animation: ill-shadow 6s ease-in-out infinite; }
+
+/* ---------- Page animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
