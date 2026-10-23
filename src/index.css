@@ -26,7 +26,7 @@
 }
 @keyframes ill-pop {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
+  50% { transform: scale(1.08); }
 }
 @keyframes ill-bar {
   0%, 100% { transform: scaleY(0.45); }
@@ -73,6 +73,85 @@
   0%, 100% { transform: scaleX(1); opacity: 1; }
   50% { transform: scaleX(0.9); opacity: 0.7; }
 }
+@keyframes ill-grow {
+  0% { transform: scaleX(0.08); }
+  45%, 85% { transform: scaleX(1); }
+  100% { transform: scaleX(0.08); }
+}
+@keyframes ill-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(14px); }
+}
+@keyframes ill-rise {
+  0% { transform: translateY(24px) scale(0.6); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(-46px) scale(1); opacity: 0; }
+}
+@keyframes ill-scan {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(90px); }
+}
+@keyframes ill-scan2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(60px); }
+}
+@keyframes ill-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes ill-page {
+  0%, 15% { transform: scaleX(1); }
+  45%, 65% { transform: scaleX(-1); }
+  95%, 100% { transform: scaleX(1); }
+}
+@keyframes ill-swing {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+@keyframes ill-steam {
+  0% { transform: translateY(10px); opacity: 0; }
+  40% { opacity: 0.9; }
+  100% { transform: translateY(-18px); opacity: 0; }
+}
+@keyframes ill-fall {
+  0% { transform: translateY(-14px); opacity: 0; }
+  30%, 70% { opacity: 0.9; }
+  100% { transform: translateY(34px); opacity: 0; }
+}
+@keyframes ill-ping {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@keyframes ill-needle {
+  0%, 100% { transform: rotate(-24deg); }
+  35% { transform: rotate(20deg); }
+  65% { transform: rotate(-8deg); }
+  85% { transform: rotate(4deg); }
+}
+@keyframes ill-px {
+  0%, 100% { transform: translateX(calc(var(--px) * -1)); }
+  50% { transform: translateX(var(--px)); }
+}
+@keyframes ill-flash {
+  0%, 88%, 100% { opacity: 0.85; }
+  92% { opacity: 0.1; }
+  94% { opacity: 1; filter: brightness(1.6); }
+}
+@keyframes ill-bob {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  50% { transform: translateY(1px); }
+  75% { transform: translateY(-1px); }
+}
+@keyframes ill-roll {
+  0%, 60%, 100% { transform: rotate(12deg) translateY(0); }
+  70% { transform: rotate(-60deg) translateY(-18px); }
+  85% { transform: rotate(-170deg) translateY(0); }
+  90% { transform: rotate(-168deg) translateY(-4px); }
+}
+@keyframes ill-road {
+  to { transform: translateX(-60px); }
+}
 
 .ill-float { animation: ill-float 4.5s ease-in-out infinite; }
 .ill-float-sm { animation: ill-float-sm 6s ease-in-out infinite; }
@@ -80,17 +159,47 @@
 .ill-spin-rev { animation: ill-spin 10s linear infinite reverse; }
 .ill-pulse { animation: ill-pulse 2.6s ease-in-out infinite; }
 .ill-pop { animation: ill-pop 3s ease-in-out infinite; }
-.ill-bar { transform-origin: bottom; animation: ill-bar 2.8s ease-in-out infinite; }
+.ill-bar { animation: ill-bar 2.8s ease-in-out infinite; }
 .ill-march { animation: ill-march 1.2s linear infinite; }
 .ill-draw { stroke-dasharray: 1; animation: ill-draw 4.5s ease-in-out infinite; }
 .ill-flip { animation: ill-flip 3.2s ease-in-out infinite; }
 .ill-drop { animation: ill-drop 1.4s linear infinite; }
-.ill-wave { transform-origin: left center; animation: ill-wave 1.8s ease-in-out infinite; }
-.ill-sway { transform-origin: bottom center; animation: ill-sway 5s ease-in-out infinite; }
+.ill-wave { animation: ill-wave 1.8s ease-in-out infinite; }
+.ill-sway { animation: ill-sway 5s ease-in-out infinite; }
 .ill-drag { animation: ill-drag 3.4s ease-in-out infinite; }
 .ill-blink { animation: ill-blink 1.6s ease-in-out infinite; }
 .ill-bounce { animation: ill-bounce 1.8s ease-in-out infinite; }
 .ill-shadow { animation: ill-shadow 6s ease-in-out infinite; }
+.ill-type { animation: ill-grow 4s ease-in-out infinite; }
+.ill-grow { animation: ill-grow 3.6s ease-in-out infinite; }
+.ill-drift { animation: ill-drift 7s ease-in-out infinite; }
+.ill-rise { animation: ill-rise 2.7s ease-out infinite; }
+.ill-scan { animation: ill-scan 3.5s ease-in-out infinite; }
+.ill-scan2 { animation: ill-scan2 2.4s ease-in-out infinite; }
+.ill-glow { animation: ill-glow 2.4s ease-in-out infinite; }
+.ill-wheel { animation: ill-spin 0.9s linear infinite; }
+.ill-page { animation: ill-page 5s ease-in-out infinite; }
+.ill-swing { animation: ill-swing 3s ease-in-out infinite; }
+.ill-steam { animation: ill-steam 2.4s ease-out infinite; }
+.ill-fall { animation: ill-fall 2.6s linear infinite; }
+.ill-ping { animation: ill-ping 1.8s ease-out infinite; }
+.ill-needle { animation: ill-needle 4s ease-in-out infinite; }
+.ill-px1 { --px: 8px; animation: ill-px 12s ease-in-out infinite; }
+.ill-px2 { --px: 16px; animation: ill-px 9s ease-in-out infinite; }
+.ill-px3 { --px: 26px; animation: ill-px 7s ease-in-out infinite; }
+.ill-flash { animation: ill-flash 3.5s linear infinite; }
+.ill-bob { animation: ill-bob 0.8s ease-in-out infinite; }
+.ill-roll { animation: ill-roll 4s ease-in-out infinite; }
+.ill-road { animation: ill-road 1.2s linear infinite; }
+
+/* Pivot points that aren't the centre (must out-rank the rule at the top). */
+.ill .ill-bar { transform-origin: bottom; }
+.ill .ill-wave { transform-origin: left center; }
+.ill .ill-sway { transform-origin: bottom center; }
+.ill .ill-type,
+.ill .ill-grow,
+.ill .ill-page { transform-origin: left center; }
+.ill .ill-swing { transform-origin: top center; }
 
 /* ---------- Page animations ---------- */
 .reveal {
