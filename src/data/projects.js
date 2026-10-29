@@ -5,8 +5,7 @@
 const shot = (id, file) =>
   `https://d33wubrfki0l68.cloudfront.net/${id}/${file}`;
 
-// Starting favourites, in order. Favourites are what the dashboard shows under
-// "Recent projects"; the heart on any card adds or removes one.
+// Starting favourites (sidebar → Favourites); the heart on any card adds or removes one.
 export const FAVORITE_PROJECTS = [
   "dream-interior-design",
   "floowpilot",

@@ -114,11 +114,6 @@ export const selectFilteredProjects = createSelector(
   },
 );
 
-// Dashboard "Recent projects": favourites in the order they were added, minus hidden ones.
-export const selectDashboardProjects = createSelector([selectVisibleProjects, selectFavoriteIds], (visible, favs) =>
-  favs.map((id) => visible.find((p) => p.id === id)).filter(Boolean),
-);
-
 // Heading for the All projects page, from whichever filter is active.
 export const selectListLabel = (state) => {
   const { search, category, favoritesOnly, caseStudiesOnly } = state.works;

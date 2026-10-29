@@ -167,41 +167,57 @@ function Kbd({ children }) {
 }
 
 export function HowToTab({ details, accent }) {
+  const { steps, shortcuts = [], manual } = details;
   return (
-    <Box sx={{ display: 'grid', gap: { xs: 3, md: 4 }, gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 340px' }, alignItems: 'start' }}>
-      <Box>
-        <SectionTitle overline="How to use" title={`From sign-in to client hand-over in ${details.steps.length} steps`} accent={accent} />
-        <Box component="ol" sx={{ listStyle: 'none', p: 0, m: 0, position: 'relative' }}>
-          {details.steps.map((s, i) => (
-            <Box
-              component="li"
-              key={s.title}
-              {...stagger(i, 0.06)}
-              sx={{
-                position: 'relative',
-                display: 'flex',
-                gap: { xs: 1.75, md: 2.5 },
-                pb: i === details.steps.length - 1 ? 0 : 2.5,
-                '&::before': i < details.steps.length - 1 && {
-                  content: '""',
-                  position: 'absolute',
-                  left: 21,
-                  top: 46,
-                  bottom: 4,
-                  width: 2,
-                  borderRadius: 2,
-                  bgcolor: alpha(accent, 0.25),
-                },
-              }}
-            >
+    <>
+      <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ justifyContent: 'space-between', alignItems: { sm: 'flex-end' }, gap: 1.5, mb: { xs: 2, md: 2.5 } }}>
+        <Box>
+          <Typography variant="overline" sx={{ display: 'block', lineHeight: 1.8, color: accent }}>
+            How to use
+          </Typography>
+          <Typography variant="h5" component="h2" sx={{ fontSize: { xs: 20, md: 24 } }}>
+            {`Get going in ${steps.length} steps`}
+          </Typography>
+        </Box>
+        {manual && (
+          <Button
+            variant="outlined"
+            size="small"
+            href={manual}
+            target="_blank"
+            rel="noopener noreferrer"
+            endIcon={<OpenInNewRoundedIcon fontSize="small" />}
+            sx={{ flexShrink: 0, borderColor: alpha(accent, 0.5), color: accent, '&:hover': { borderColor: accent, bgcolor: alpha(accent, 0.06) } }}
+          >
+            Full user manual
+          </Button>
+        )}
+      </Stack>
+
+      {/* Compact numbered cards — four to a row on desktop so the whole flow fits on about one screen. */}
+      <Box
+        component="ol"
+        sx={{
+          listStyle: 'none',
+          p: 0,
+          m: 0,
+          display: 'grid',
+          gap: 1.5,
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(4, minmax(0, 1fr))' },
+        }}
+      >
+        {steps.map((s, i) => (
+          <Card key={s.title} component="li" accent={accent} {...stagger(i, 0.04)} sx={{ p: { xs: 1.75, md: 2 } }}>
+            <Stack direction="row" sx={{ alignItems: 'center', gap: 1.25 }}>
               <Box
                 sx={{
                   flexShrink: 0,
-                  width: 44,
-                  height: 44,
+                  width: 28,
+                  height: 28,
                   borderRadius: '50%',
                   display: 'grid',
                   placeItems: 'center',
+                  fontSize: 13,
                   fontWeight: 600,
                   color: '#fff',
                   bgcolor: accent,
@@ -209,57 +225,48 @@ export function HowToTab({ details, accent }) {
               >
                 {i + 1}
               </Box>
-              <Card accent={accent} sx={{ flex: 1, p: { xs: 1.75, md: 2 } }}>
-                <Stack direction="row" sx={{ alignItems: 'center', gap: 1 }}>
-                  <Box component={s.icon} sx={{ fontSize: 20, color: accent }} />
-                  <Typography sx={{ fontWeight: 600 }}>{s.title}</Typography>
-                </Stack>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.75, lineHeight: 1.7 }}>
-                  {s.text}
-                </Typography>
-              </Card>
-            </Box>
-          ))}
-        </Box>
+              <Typography sx={{ fontWeight: 600, fontSize: 14.5, lineHeight: 1.3, flex: 1, minWidth: 0 }}>{s.title}</Typography>
+              <Box component={s.icon} sx={{ fontSize: 20, color: accent, opacity: 0.8, flexShrink: 0 }} />
+            </Stack>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1, lineHeight: 1.6, fontSize: 13.5 }}>
+              {s.text}
+            </Typography>
+          </Card>
+        ))}
       </Box>
 
-      <Card sx={{ position: { lg: 'sticky' }, top: { lg: 136 } }}>
-        <Stack direction="row" sx={{ alignItems: 'center', gap: 1, mb: 1.5 }}>
-          <KeyboardRoundedIcon sx={{ color: accent }} />
-          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-            Keyboard shortcuts
-          </Typography>
-        </Stack>
-        {details.shortcuts.map((s) => (
-          <Stack
-            key={s.action}
-            direction="row"
-            sx={{ py: 0.9, justifyContent: 'space-between', alignItems: 'center', '&:not(:last-of-type)': { borderBottom: 1, borderColor: 'divider' } }}
-          >
-            <Typography variant="body2" color="text.secondary">
-              {s.action}
-            </Typography>
-            <Stack direction="row" spacing={0.5}>
-              {s.keys.map((k) => (
-                <Kbd key={k}>{k}</Kbd>
-              ))}
-            </Stack>
+      {shortcuts.length > 0 && (
+        <Card sx={{ mt: { xs: 2, md: 2.5 }, p: { xs: 1.75, md: 2 } }}>
+          <Stack direction="row" sx={{ alignItems: 'center', gap: 1, mb: 1 }}>
+            <KeyboardRoundedIcon sx={{ color: accent, fontSize: 20 }} />
+            <Typography sx={{ fontWeight: 600, fontSize: 14.5 }}>Keyboard shortcuts</Typography>
           </Stack>
-        ))}
-        {details.manual && (
-          <Button
-            fullWidth
-            variant="outlined"
-            href={details.manual}
-            target="_blank"
-            rel="noopener noreferrer"
-            endIcon={<OpenInNewRoundedIcon fontSize="small" />}
-            sx={{ mt: 2, borderColor: alpha(accent, 0.5), color: accent, '&:hover': { borderColor: accent, bgcolor: alpha(accent, 0.06) } }}
+          <Box
+            sx={{
+              display: 'grid',
+              columnGap: 3,
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(3, minmax(0, 1fr))', xl: 'repeat(4, minmax(0, 1fr))' },
+            }}
           >
-            Full user manual
-          </Button>
-        )}
-      </Card>
-    </Box>
+            {shortcuts.map((k) => (
+              <Stack
+                key={k.action}
+                direction="row"
+                sx={{ py: 0.75, gap: 1, justifyContent: 'space-between', alignItems: 'center', borderBottom: 1, borderColor: 'divider' }}
+              >
+                <Typography variant="body2" color="text.secondary" noWrap sx={{ fontSize: 13 }}>
+                  {k.action}
+                </Typography>
+                <Stack direction="row" spacing={0.5} sx={{ flexShrink: 0 }}>
+                  {k.keys.map((key) => (
+                    <Kbd key={key}>{key}</Kbd>
+                  ))}
+                </Stack>
+              </Stack>
+            ))}
+          </Box>
+        </Card>
+      )}
+    </>
   );
 }

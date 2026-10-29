@@ -36,7 +36,7 @@ export default function App() {
           <Sidebar mobileOpen={menuOpen} onClose={() => setMenuOpen(false)} />
           <Box sx={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
             <AppHeader onMenu={() => setMenuOpen(true)} />
-            <Box component="main" sx={{ flex: 1, width: '100%', maxWidth: 1680, mx: 'auto', px: { xs: 2, sm: 3, md: 4 }, pb: 6 }}>
+            <Box component="main" sx={{ flex: 1, width: '100%', maxWidth: 1680, mx: 'auto', px: { xs: 2, sm: 3, md: 4 }, pb: { xs: 3, md: 3 } }}>
               <Suspense fallback={null}>
                 <Routes>
                   <Route path="/" element={<DashboardPage />} />
