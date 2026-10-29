@@ -4,16 +4,22 @@ import { FAVORITE_PROJECTS } from '../data/projects';
 
 const STORAGE_KEY = 'ganesh-works:prefs';
 const PERSISTED = ['favoriteIds', 'hiddenIds', 'themeMode', 'sort'];
-const VERSION = 4; // v3 made light the default theme; v4 seeded the starting favourites
+const VERSION = 5; // v3 light default theme; v4 seeded the starting favourites; v5 added HomeHub
+
+// Favourites added in each storage version, merged into what a browser already saved.
+const NEW_FAVORITES = { 4: FAVORITE_PROJECTS, 5: ['homehub'] };
 
 function loadPrefs() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
     // Theme saved before v3 was just the old default, so let the new default win.
     if ((saved.v ?? 0) < 3) delete saved.themeMode;
-    // Before v4 there were no starting favourites — add them to whatever was saved.
-    if ((saved.v ?? 0) < 4 && Array.isArray(saved.favoriteIds)) {
-      saved.favoriteIds = [...new Set([...FAVORITE_PROJECTS, ...saved.favoriteIds])];
+    // Add starting favourites introduced since this browser last saved.
+    if (Array.isArray(saved.favoriteIds)) {
+      const added = Object.entries(NEW_FAVORITES)
+        .filter(([v]) => (saved.v ?? 0) < Number(v))
+        .flatMap(([, ids]) => ids);
+      saved.favoriteIds = [...new Set([...saved.favoriteIds, ...added])];
     }
     return saved;
   } catch {

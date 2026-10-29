@@ -45,6 +45,8 @@ export const PALETTES = {
   blue: pal('#3b5bdb', '#283c9b', '#c5d0fa', '#f0f3ff', '#dbe2fe', '#0b1030', '#1c2a66', '#fb7185', '#fecdd3'),
   gold: pal('#ca8a04', '#854d0e', '#fef08a', '#fefce8', '#fbf3c2', '#1d1704', '#3f330b', '#7c3aed', '#ddd6fe'),
   slate: pal('#475569', '#1e293b', '#cbd5e1', '#f4f6f9', '#e2e8f0', '#0e1217', '#253041', '#f97316', '#fed7aa'),
+  // HomeHub's own green with its orange dot
+  forest: pal('#2f6b45', '#1d4a2f', '#b5dcc2', '#eef7f0', '#d4ecdb', '#0a1a10', '#173623', '#f59e0b', '#fde68a'),
 };
 
 export const d = (s) => ({ animationDelay: `${s}s` });

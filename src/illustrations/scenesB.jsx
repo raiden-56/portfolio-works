@@ -743,3 +743,85 @@ export function Website({ p, Icon }) {
     </g>
   );
 }
+
+/** A house with a household dashboard in its window, a shopping list ticking itself off, a bill
+ *  that's due, a calendar and a notification bell — HomeHub's "everything in one place". */
+export function HomeDashboard({ p }) {
+  const list = [44, 34, 40];
+  return (
+    <g>
+      {/* House */}
+      <g className="ill-float-sm">
+        <rect x={238} y={66} width={18} height={40} rx={3} fill={p.mainDark} />
+        <rect x={132} y={118} width={136} height={132} rx={8} fill={W} />
+        <path d="M118 126 L200 58 L282 126 Z" fill={p.main} strokeLinejoin="round" />
+        <circle cx={248} cy={60} r={6} fill={p.accent} />
+        {/* Dashboard in the window */}
+        <rect x={144} y={132} width={112} height={68} rx={6} fill={SURF} />
+        {[0, 1, 2].map((i) => (
+          <g key={i}>
+            <rect x={150 + i * 35} y={138} width={30} height={20} rx={4} fill={W} />
+            <rect x={154 + i * 35} y={143} width={14} height={4} rx={2} fill={i === 1 ? p.accent : p.main} />
+            <rect x={154 + i * 35} y={150} width={20} height={3} rx={1.5} fill={LINE} />
+          </g>
+        ))}
+        {[18, 26, 14, 30, 22].map((h, i) => (
+          <rect key={i} className="ill-bar" style={d(i * 0.2)} x={152 + i * 12} y={194 - h} width={8} height={h} rx={2} fill={i === 3 ? p.main : p.mainLight} />
+        ))}
+        <rect x={218} y={166} width={32} height={4} rx={2} fill={MUTE} />
+        <rect x={218} y={175} width={24} height={4} rx={2} fill={LINE} />
+        <rect x={218} y={184} width={28} height={4} rx={2} fill={LINE} />
+        {/* Door */}
+        <rect x={186} y={208} width={28} height={42} rx={4} fill={p.mainDark} />
+        <circle cx={208} cy={230} r={2.5} fill={GOLD} />
+      </g>
+
+      {/* Shopping list ticking itself off */}
+      <At x={82} y={156} cls="ill-float" delay={-1.5}>
+        <rect x={-38} y={-50} width={76} height={100} rx={10} fill={W} />
+        <rect x={-26} y={-38} width={30} height={6} rx={3} fill={p.main} />
+        <path d="M14 -40 h4 l3 10 h12 l2 -7 h-15" fill="none" stroke={p.mainDark} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx={22} cy={-27} r={1.8} fill={p.mainDark} />
+        <circle cx={31} cy={-27} r={1.8} fill={p.mainDark} />
+        {list.map((w, i) => {
+          const y = -14 + i * 20;
+          return (
+            <g key={i}>
+              <circle cx={-24} cy={y} r={6} fill="none" stroke={p.main} strokeWidth={2} />
+              <path className="ill-draw" style={d(i * 0.6)} d={`M-27 ${y} l2.4 2.4 l4.6 -4.6`} stroke={p.main} strokeWidth={2} fill="none" strokeLinecap="round" pathLength={1} />
+              <rect x={-12} y={y - 2.5} width={w} height={5} rx={2.5} fill={LINE} />
+            </g>
+          );
+        })}
+      </At>
+
+      {/* Bill that's due soon */}
+      <At x={322} y={104} cls="ill-float" delay={-0.5}>
+        <rect x={-40} y={-30} width={80} height={60} rx={10} fill={W} />
+        <rect x={-28} y={-18} width={26} height={5} rx={2.5} fill={MUTE} />
+        <text x={-28} y={6} fontSize={15} fontWeight={700} fill={INK} fontFamily={SANS}>
+          ₹2,400
+        </text>
+        <rect className="ill-pulse" x={-28} y={12} width={36} height={11} rx={5.5} fill={p.accent} />
+        <rect x={-23} y={16} width={22} height={3} rx={1.5} fill={W} />
+      </At>
+
+      {/* Calendar */}
+      <At x={326} y={204} cls="ill-float" delay={-2.5}>
+        <rect x={-32} y={-30} width={64} height={60} rx={9} fill={W} />
+        <rect x={-32} y={-30} width={64} height={16} rx={9} fill={p.main} />
+        <rect x={-32} y={-20} width={64} height={6} fill={p.main} />
+        {Array.from({ length: 9 }, (_, i) => (
+          <rect key={i} x={-23 + (i % 3) * 17} y={-8 + Math.floor(i / 3) * 12} width={12} height={8} rx={2} fill={i === 4 ? p.accent : SURF} />
+        ))}
+      </At>
+
+      {/* Notification bell */}
+      <At x={96} y={64} r={0} cls="ill-swing">
+        <path d="M-13 8 C-13 -8 -9 -16 0 -16 C9 -16 13 -8 13 8 L16 12 H-16 Z" fill={GOLD} />
+        <circle cy={15} r={4} fill={GOLD_D} />
+        <circle cx={11} cy={-12} r={5} fill={RED} />
+      </At>
+    </g>
+  );
+}

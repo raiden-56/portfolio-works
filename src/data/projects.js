@@ -13,6 +13,7 @@ export const FAVORITE_PROJECTS = [
   "intervexa",
   "tripore",
   "organization-tree",
+  "homehub",
 ];
 
 export const CATEGORIES = [
@@ -28,6 +29,20 @@ export const CATEGORIES = [
 ];
 
 const raw = [
+  {
+    name: "homehub",
+    title: "HomeHub",
+    image: null,
+    url: "https://raiden-56.github.io/homehub/",
+    repo: "https://github.com/raiden-56/homehub",
+    source: "GitHub",
+    publishedAt: "2026-10-29",
+    category: "Productivity",
+    featured: true,
+    description:
+      "Household management app — inventory, shopping, chores, bills, expenses and maintenance on one shared calendar.",
+    tags: ["Household", "Bills", "Inventory"],
+  },
   {
     name: "ganesh-mesta",
     title: "Ganesh Mesta — Portfolio",

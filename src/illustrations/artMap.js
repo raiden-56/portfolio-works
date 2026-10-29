@@ -56,6 +56,7 @@ const ART = {
   'otp-generator-ui': art(B.OtpPhone, 'violet', 'bubbles', 'sparkle'),
   'generate-bar-code': art(B.BarcodeScan, 'amber', 'grid', 'dots'),
   referlooop: art(B.ReferralLoop, 'rose', 'rings', 'confetti'),
+  homehub: art(B.HomeDashboard, 'forest', 'arch', 'leaves'),
 };
 
 const CATEGORY_ICON = {
