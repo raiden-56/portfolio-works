@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Fab, Zoom } from '@mui/material';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 
-/** Purple round button that appears after scrolling and returns to the top. */
+/** Round button that appears after scrolling and returns to the top. */
 export default function BackToTop() {
   const [show, setShow] = useState(false);
 
@@ -24,7 +24,6 @@ export default function BackToTop() {
           right: { xs: 16, md: 28 },
           bottom: { xs: 16, md: 28 },
           zIndex: 1100,
-          boxShadow: '0 12px 30px -8px rgba(139,92,246,0.7)',
         }}
       >
         <KeyboardArrowUpRoundedIcon />

@@ -1,5 +1,6 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { PROJECTS } from '../data/projects';
+import { FAVORITE_PROJECTS, PROJECTS } from '../data/projects';
+import { DETAILS } from '../data/details';
 
 export const SORTS = {
   newest: 'Newest first',
@@ -17,9 +18,9 @@ const initialState = {
   source: 'All sources',
   sort: 'newest',
   favoritesOnly: false,
-  favoriteIds: [],
+  caseStudiesOnly: false,
+  favoriteIds: FAVORITE_PROJECTS,
   hiddenIds: [],
-  selectedId: null,
   hiddenDialogOpen: false,
   themeMode: 'light',
 };
@@ -36,21 +37,20 @@ const worksSlice = createSlice({
     setSource: (s, a) => void (s.source = a.payload),
     setSort: (s, a) => void (s.sort = a.payload),
     toggleFavoritesOnly: (s) => void (s.favoritesOnly = !s.favoritesOnly),
+    setCaseStudiesOnly: (s, a) => void (s.caseStudiesOnly = a.payload),
     resetFilters: (s) => {
       s.search = '';
       s.category = 'All';
       s.source = 'All sources';
       s.favoritesOnly = false;
+      s.caseStudiesOnly = false;
     },
     toggleFavorite: (s, a) => void (s.favoriteIds = toggleIn(s.favoriteIds, a.payload)),
     hideProject: (s, a) => {
       if (!s.hiddenIds.includes(a.payload)) s.hiddenIds.push(a.payload);
-      if (s.selectedId === a.payload) s.selectedId = null;
     },
     unhideProject: (s, a) => void (s.hiddenIds = s.hiddenIds.filter((x) => x !== a.payload)),
     unhideAll: (s) => void (s.hiddenIds = []),
-    openProject: (s, a) => void (s.selectedId = a.payload),
-    closeProject: (s) => void (s.selectedId = null),
     setHiddenDialogOpen: (s, a) => void (s.hiddenDialogOpen = a.payload),
     toggleTheme: (s) => void (s.themeMode = s.themeMode === 'light' ? 'dark' : 'light'),
   },
@@ -62,13 +62,12 @@ export const {
   setSource,
   setSort,
   toggleFavoritesOnly,
+  setCaseStudiesOnly,
   resetFilters,
   toggleFavorite,
   hideProject,
   unhideProject,
   unhideAll,
-  openProject,
-  closeProject,
   setHiddenDialogOpen,
   toggleTheme,
 } = worksSlice.actions;
@@ -91,12 +90,13 @@ export const selectHiddenProjects = createSelector([selectProjects, selectHidden
 
 export const selectFilteredProjects = createSelector(
   [selectVisibleProjects, selectWorks],
-  (visible, { search, category, source, sort, favoritesOnly, favoriteIds }) => {
+  (visible, { search, category, source, sort, favoritesOnly, caseStudiesOnly, favoriteIds }) => {
     const q = search.trim().toLowerCase();
     const list = visible.filter((p) => {
       if (category !== 'All' && p.category !== category) return false;
       if (source !== 'All sources' && p.source !== source) return false;
       if (favoritesOnly && !favoriteIds.includes(p.id)) return false;
+      if (caseStudiesOnly && !DETAILS[p.id]) return false;
       if (!q) return true;
       return [p.title, p.name, p.description, p.category, p.framework, ...p.tags]
         .filter(Boolean)
@@ -114,22 +114,21 @@ export const selectFilteredProjects = createSelector(
   },
 );
 
-const newestFirst = (list) => [...list].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-
-export const selectRecentProjects = createSelector([selectVisibleProjects], (visible) =>
-  newestFirst(visible).slice(0, 4),
+// Dashboard "Recent projects": favourites in the order they were added, minus hidden ones.
+export const selectDashboardProjects = createSelector([selectVisibleProjects, selectFavoriteIds], (visible, favs) =>
+  favs.map((id) => visible.find((p) => p.id === id)).filter(Boolean),
 );
 
-// Home carousel: every visible project, starred ones first, then newest.
-export const selectCarouselProjects = createSelector([selectVisibleProjects], (visible) =>
-  newestFirst(visible).sort((a, b) => Number(b.featured) - Number(a.featured)),
-);
+// Heading for the All projects page, from whichever filter is active.
+export const selectListLabel = (state) => {
+  const { search, category, favoritesOnly, caseStudiesOnly } = state.works;
+  if (search.trim()) return `Results for “${search.trim()}”`;
+  if (favoritesOnly) return 'Favourites';
+  if (caseStudiesOnly) return category === 'All' ? 'Case studies' : `${category} · case studies`;
+  if (category !== 'All') return category;
+  return 'All projects';
+};
 
 export const selectCategoryCounts = createSelector([selectVisibleProjects], (visible) =>
   visible.reduce((acc, p) => ({ ...acc, [p.category]: (acc[p.category] || 0) + 1 }), {}),
-);
-
-export const selectSelectedProject = createSelector(
-  [selectProjects, (state) => state.works.selectedId],
-  (all, id) => all.find((p) => p.id === id) || null,
 );

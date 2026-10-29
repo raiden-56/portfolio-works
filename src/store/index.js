@@ -1,15 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import worksReducer from './worksSlice';
+import { FAVORITE_PROJECTS } from '../data/projects';
 
 const STORAGE_KEY = 'ganesh-works:prefs';
 const PERSISTED = ['favoriteIds', 'hiddenIds', 'themeMode', 'sort'];
-const VERSION = 3; // v3 made light the default theme
+const VERSION = 4; // v3 made light the default theme; v4 seeded the starting favourites
 
 function loadPrefs() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
     // Theme saved before v3 was just the old default, so let the new default win.
-    if (saved.v !== VERSION) delete saved.themeMode;
+    if ((saved.v ?? 0) < 3) delete saved.themeMode;
+    // Before v4 there were no starting favourites — add them to whatever was saved.
+    if ((saved.v ?? 0) < 4 && Array.isArray(saved.favoriteIds)) {
+      saved.favoriteIds = [...new Set([...FAVORITE_PROJECTS, ...saved.favoriteIds])];
+    }
     return saved;
   } catch {
     return {};

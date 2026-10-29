@@ -1,47 +1,47 @@
 import { createTheme, alpha } from '@mui/material/styles';
 
+// Flat, neutral palette with a single indigo accent — no gradients or glows.
+export const SIDEBAR_WIDTH = 256;
+export const HEADER_HEIGHT = 64;
+
 export function buildTheme(mode) {
   const dark = mode === 'dark';
-  const ink = '#17142e';
-  const purple = dark ? '#8b5cf6' : '#7c3aed';
+  const ink = '#0f172a';
+  const accent = dark ? '#818cf8' : '#4f46e5';
 
   return createTheme({
     palette: {
       mode,
-      primary: { main: purple, light: '#a78bfa', dark: '#6d28d9', contrastText: '#ffffff' },
-      secondary: { main: '#c084fc' },
+      primary: { main: accent, light: dark ? '#a5b4fc' : '#6366f1', dark: '#4338ca', contrastText: '#ffffff' },
+      secondary: { main: dark ? '#94a3b8' : '#475569' },
       background: {
-        default: dark ? '#0a0a12' : '#f7f6fc',
-        paper: dark ? '#12121c' : '#ffffff',
+        default: dark ? '#0b0f17' : '#f5f6f8',
+        paper: dark ? '#111722' : '#ffffff',
       },
       text: {
-        primary: dark ? '#f5f3ff' : ink,
-        secondary: dark ? '#a29eba' : '#625d7a',
+        primary: dark ? '#e5e7eb' : ink,
+        secondary: dark ? '#94a3b8' : '#64748b',
       },
-      divider: dark ? alpha('#ffffff', 0.08) : alpha(ink, 0.09),
+      divider: dark ? alpha('#ffffff', 0.08) : alpha(ink, 0.08),
     },
-    shape: { borderRadius: 10 },
+    shape: { borderRadius: 8 },
     typography: {
       fontFamily: '"Poppins", system-ui, sans-serif',
       fontSize: 14,
-      h1: { fontWeight: 600, letterSpacing: '-0.025em', lineHeight: 1.15 },
-      h4: { fontWeight: 600, letterSpacing: '-0.02em' },
+      h1: { fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.2 },
+      h4: { fontWeight: 600, letterSpacing: '-0.015em' },
       h5: { fontWeight: 600, letterSpacing: '-0.01em' },
       h6: { fontWeight: 600, letterSpacing: '-0.01em' },
       subtitle1: { fontWeight: 500 },
-      overline: { fontWeight: 500, letterSpacing: '0.18em' },
+      overline: { fontWeight: 600, letterSpacing: '0.12em', fontSize: 11 },
       button: { textTransform: 'none', fontWeight: 500 },
     },
     components: {
       MuiButton: {
-        styleOverrides: {
-          root: { borderRadius: 999 },
-          containedPrimary: {
-            boxShadow: `0 8px 20px -8px ${alpha(purple, 0.7)}`,
-            '&:hover': { boxShadow: `0 10px 26px -8px ${alpha(purple, 0.85)}` },
-          },
-        },
+        defaultProps: { disableElevation: true },
+        styleOverrides: { root: { borderRadius: 8 } },
       },
+      MuiFab: { styleOverrides: { root: { boxShadow: '0 4px 14px rgba(15,23,42,0.18)' } } },
       // No grey elevation overlay on dark surfaces (dialogs, menus)
       MuiPaper: { styleOverrides: { root: { backgroundImage: 'none' } } },
       MuiChip: { styleOverrides: { root: { fontWeight: 500 } } },

@@ -50,6 +50,8 @@ function QuickActions({ project }) {
     color: '#fff',
     backdropFilter: 'blur(6px)',
     '&:hover': { bgcolor: 'primary.main' },
+    opacity: 0,
+    transition: 'opacity .25s',
   };
   return (
     <Box
@@ -62,13 +64,11 @@ function QuickActions({ project }) {
         zIndex: 2,
         display: 'flex',
         gap: 0.75,
-        opacity: isFav ? 1 : 0,
-        transition: 'opacity .25s',
-        '&:focus-within': { opacity: 1 },
+        '& .qa-on, &:focus-within .MuiIconButton-root': { opacity: 1 },
       }}
     >
       <Tooltip title={isFav ? 'Remove from favourites' : 'Add to favourites'}>
-        <IconButton size="small" sx={btn} onClick={() => dispatch(toggleFavorite(project.id))}>
+        <IconButton size="small" className={isFav ? 'qa-on' : undefined} sx={btn} onClick={() => dispatch(toggleFavorite(project.id))}>
           {isFav ? (
             <FavoriteRoundedIcon fontSize="small" sx={{ color: '#f472b6' }} />
           ) : (
@@ -110,7 +110,7 @@ export default function ProjectMedia({
         overflow: 'hidden',
         '& .media-inner': { transition: 'transform .7s cubic-bezier(.2,.8,.2,1)' },
         '&:hover .media-inner': { transform: 'scale(1.04)' },
-        '&:hover .visit-btn, &:hover .quick-actions': { opacity: 1, transform: 'none' },
+        '&:hover .visit-btn, &:hover .quick-actions .MuiIconButton-root': { opacity: 1, transform: 'none' },
       }}
     >
       <Box className="media-inner" sx={{ position: 'absolute', inset: 0 }}>

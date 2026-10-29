@@ -37,7 +37,7 @@ export function HiddenProjectsDialog() {
       <DialogTitle sx={{ pb: 0.5 }}>Hidden projects</DialogTitle>
       <DialogContent sx={{ px: 1.5 }}>
         <Typography variant="body2" color="text.secondary" sx={{ px: 1.5, mb: 1 }}>
-          Hidden works don&apos;t appear in the carousel, grid or stats. Your choice is saved in this browser.
+          Hidden works don&apos;t appear on the dashboard or in its stats. Your choice is saved in this browser.
         </Typography>
         {hidden.length === 0 ? (
           <Box sx={{ py: 5, textAlign: 'center', color: 'text.secondary' }}>

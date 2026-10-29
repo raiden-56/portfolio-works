@@ -73,6 +73,36 @@ Ganesh chose to **edit project descriptions himself** in `src/data/projects.js`.
 - Switched the default theme to **light** (`themeMode: 'light'` in `worksSlice.js`, storage `VERSION = 3` in `store/index.js`). Keep light as default.
 - Hid 5 projects in the browser (33 of 38 visible on his machine).
 
+### Request 6 — Dashboard + per-project case studies (Oct 29, 2026)
+> Remove the carousel, land directly on a dashboard of project cards with KPIs (no graphs), use the viewport fully. Each project opens a page with tabs: General (image, title, description), Why this app, What it solves, Features, How to use, Screenshots. Document projects one at a time from their GitHub repos — starting with Dream Interior Design.
+
+**Done:**
+- `/` is now **DashboardPage**: compact header, 6 KPI tiles (live projects, shipped this year, from GitHub, categories, case studies, latest release), full-width filter bar, 1→5 column grid. Carousel, Home/Projects pages and the detail modal were removed; `/projects` redirects to `/`.
+- Cards open **`/project/:id`** (ProjectDetailPage, lazy-loaded) with the six tabs; `?tab=` keeps the tab in the URL. Projects without a case study show General plus "on its way" placeholders.
+- **Dream Interior Design** documented from `github.com/raiden-56/Interior-design` (Interior Studio): content in `src/data/details/dream-interior-design.js`, 10 screenshots in `public/projects/dream-interior-design/` taken from the repo's own recorded user-manual video (the live site needs a sign-in).
+- Next projects: one at a time, same pattern.
+
+### Request 7 — Professional redesign (Oct 29, 2026)
+> No gradients. Left sidebar instead of the top menu. Dashboard: 4 useful KPIs and a short "Recent projects" list instead of filters; search in a fixed header. Screenshots tab should fit one screen. Make the six picked projects favourites.
+
+**Done:**
+- Flat theme (`theme.js`): neutral slate surfaces, single indigo accent, no gradients/glows anywhere. Drifting background orbs removed.
+- `Sidebar.jsx`: brand, Dashboard / All projects / Favourites, categories with counts, case studies; GitHub, hidden projects and theme toggle at the bottom. Becomes a slide-out drawer below `md`.
+- `AppHeader.jsx`: fixed top bar with page title/breadcrumb and project search (pick a result to open it, Enter for all matches, `/` to focus).
+- Dashboard: 4 KPIs (live projects, shipped this year, case studies, latest release) + **Recent projects** = your favourites, in order. Starting favourites are `FAVORITE_PROJECTS` in `projects.js` (Dream Interior Design, Floowpilot, Layora, Intervexa, Tripore, Organization Tree); storage `VERSION = 4` adds them to favourites already saved in a browser.
+- `/projects` (ProjectsPage) lists everything, narrowed by sidebar category / favourites or header search. The old FilterBar and NavBar were removed.
+- Screenshots tab sizes the image from the viewport height so image, caption and thumbnails fit on one screen.
+
+### Request 8 — Case-study filter, paging, four more case studies (Oct 29, 2026)
+- Sidebar trimmed to Dashboard / All projects / Favourites / Case studies. All projects page: category dropdown, All | Case studies toggle (`caseStudiesOnly` in the store), 4 cards per row, 12 per page with pagination.
+- Case studies added (content in `src/data/details/<id>.js`, screenshots of the live apps in `public/projects/<id>/`, `repo` set in `projects.js`):
+  - `tripore` ← github.com/raiden-56/Tripora (TravelCanvas; public pages only — the app itself needs sign-in)
+  - `floowpilot` ← github.com/raiden-56/flowpilot (FlowPilot AI)
+  - `filoraa` ← github.com/raiden-56/Filora (PDFly)
+  - `layora` ← github.com/raiden-56/Layrly (Template Studio)
+- Card descriptions rewritten for Floowpilot and Layora to match what the apps actually do.
+- Noticed on the live sites (not fixed — they live in other repos): Tripora and Layrly deploys have no SPA fallback, so deep links 404 (add `public/_redirects` with `/* /index.html 200`); Layrly lists Ctrl+K "Search templates" but has no handler for it.
+
 ---
 
 ## 3. Project structure
@@ -180,6 +210,8 @@ Projects **not** in `artMap.js` automatically get the generic **Website** scene 
 ## 6. How to…
 
 **Add a project** — add an object to `src/data/projects.js` (`name`, `title`, `image` or `null`, `source`, `publishedAt`, `category`, `description`, `tags`, optional `featured: true`). It appears everywhere automatically; for a custom illustration, add a line to `ART` in `artMap.js`.
+
+**Add a case study (detail tabs)** — create `src/data/details/<project-name>.js` (copy the Dream Interior Design file's shape: `tagline`, `cover`, `overview`, `highlights`, `stack`, `why`, `solves`, `features`, `steps`, `shortcuts`, `screenshots`, optional `accent`), register it in `src/data/details/index.js`, put images in `public/projects/<project-name>/`, and set `repo` on the project in `projects.js`.
 
 **Change a card's look** — edit its line in `artMap.js`: `art(Scene, 'palette', 'background', 'decor', shadow)`.
 - Palettes: violet, teal, coral, sky, emerald, amber, indigo, rose, orange, cyan, lime, blue, gold, slate

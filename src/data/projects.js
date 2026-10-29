@@ -5,6 +5,17 @@
 const shot = (id, file) =>
   `https://d33wubrfki0l68.cloudfront.net/${id}/${file}`;
 
+// Starting favourites, in order. Favourites are what the dashboard shows under
+// "Recent projects"; the heart on any card adds or removes one.
+export const FAVORITE_PROJECTS = [
+  "dream-interior-design",
+  "floowpilot",
+  "layora",
+  "intervexa",
+  "tripore",
+  "organization-tree",
+];
+
 export const CATEGORIES = [
   "Portfolio",
   "Business",
@@ -45,9 +56,10 @@ const raw = [
     publishedAt: "2026-10-06",
     category: "Business",
     featured: true,
+    repo: "https://github.com/raiden-56/Interior-design",
     description:
-      "An interior design studio app with a secure sign-in, project showcase and client workspace.",
-    tags: ["Auth", "Studio"],
+      "Browser-based interior design studio — draw a 2D floor plan, see it in 3D, walk through it and share it with clients.",
+    tags: ["3D", "Floor plans", "AI"],
   },
   {
     name: "layora",
@@ -60,9 +72,10 @@ const raw = [
     publishedAt: "2026-09-22",
     category: "Productivity",
     featured: true,
+    repo: "https://github.com/raiden-56/Layrly",
     description:
-      "A block-based page builder: start from a blank canvas or 33 ready-made templates, import HTML, save blocks and manage a brand kit.",
-    tags: ["Page builder", "Templates", "Editor"],
+      "A no-code email template builder: drag & drop blocks or write in document mode, 33 templates, email-safe HTML export.",
+    tags: ["Email templates", "Drag & drop", "Editor"],
   },
   {
     name: "flipora",
@@ -90,6 +103,7 @@ const raw = [
     publishedAt: "2026-08-27",
     category: "Travel",
     featured: true,
+    repo: "https://github.com/raiden-56/Tripora",
     description:
       "Your personal travel memory map — every destination visited, every memory captured and every adventure still waiting.",
     tags: ["Maps", "Travel journal"],
@@ -189,7 +203,9 @@ const raw = [
     source: "GitHub",
     publishedAt: "2026-10-11",
     category: "Productivity",
-    description: "Workflow automation app to plan, run and track processes.",
+    repo: "https://github.com/raiden-56/flowpilot",
+    description:
+      "Visual AI agent workflow builder — canvas editor, step-by-step debugging and human approvals, all in the browser.",
     tags: ["Workflow", "SaaS"],
   },
   {
@@ -202,6 +218,7 @@ const raw = [
     source: "GitHub",
     publishedAt: "2026-09-27",
     category: "Productivity",
+    repo: "https://github.com/raiden-56/Filora",
     description:
       "All your PDF tools in one place — merge, split, convert and compress PDFs in the browser.",
     tags: ["PDF", "Tools"],
@@ -547,6 +564,7 @@ export const PROJECTS = raw
   .map((p) => ({
     framework: null,
     featured: false,
+    repo: null,
     url: `https://${p.name}.netlify.app`,
     ...p,
     id: p.name,
