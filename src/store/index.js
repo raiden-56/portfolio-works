@@ -4,10 +4,14 @@ import { FAVORITE_PROJECTS } from '../data/projects';
 
 const STORAGE_KEY = 'ganesh-works:prefs';
 const PERSISTED = ['favoriteIds', 'hiddenIds', 'themeMode', 'sort'];
-const VERSION = 5; // v3 light default theme; v4 seeded the starting favourites; v5 added HomeHub
+const VERSION = 6; // v3 light default theme; v4 seeded the starting favourites; v5 added HomeHub; v6 the GitHub Pages apps
 
 // Favourites added in each storage version, merged into what a browser already saved.
-const NEW_FAVORITES = { 4: FAVORITE_PROJECTS, 5: ['homehub'] };
+const NEW_FAVORITES = {
+  4: FAVORITE_PROJECTS,
+  5: ['homehub'],
+  6: ['spaceflow', 'smartnest', 'towpilot', 'collabspace', 'crewdesk'],
+};
 
 function loadPrefs() {
   try {

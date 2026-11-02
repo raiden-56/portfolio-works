@@ -14,6 +14,11 @@ export const FAVORITE_PROJECTS = [
   "tripore",
   "organization-tree",
   "homehub",
+  "spaceflow",
+  "smartnest",
+  "towpilot",
+  "collabspace",
+  "crewdesk",
 ];
 
 export const CATEGORIES = [
