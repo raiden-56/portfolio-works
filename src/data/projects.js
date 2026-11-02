@@ -30,6 +30,20 @@ export const CATEGORIES = [
 
 const raw = [
   {
+    name: "spaceflow",
+    title: "SpaceFlow",
+    image: "/projects/spaceflow/01-explore-3d.webp",
+    url: "https://raiden-56.github.io/SpaceFlow/login",
+    repo: "https://github.com/raiden-56/SpaceFlow",
+    source: "GitHub",
+    publishedAt: "2026-11-01",
+    category: "Business",
+    featured: true,
+    description:
+      "Office desk and meeting-room booking with a 3D/2D floor explorer, QR check-in and a full admin portal.",
+    tags: ["Desk booking", "3D", "Workplace"],
+  },
+  {
     name: "homehub",
     title: "HomeHub",
     image: null,
@@ -42,6 +56,62 @@ const raw = [
     description:
       "Household management app — inventory, shopping, chores, bills, expenses and maintenance on one shared calendar.",
     tags: ["Household", "Bills", "Inventory"],
+  },
+  {
+    name: "smartnest",
+    title: "SmartNest",
+    image: "/projects/smartnest/01-overview.webp",
+    url: "https://raiden-56.github.io/Smartnest/",
+    repo: "https://github.com/raiden-56/Smartnest",
+    source: "GitHub",
+    publishedAt: "2026-10-29",
+    category: "Utilities",
+    featured: true,
+    description:
+      "Smart-home control centre for rooms, devices, cameras, scenes, automations and energy, with confirmed commands.",
+    tags: ["Smart home", "Home Assistant"],
+  },
+  {
+    name: "towpilot",
+    title: "TowPilot",
+    image: "/projects/towpilot/08-dispatch-centre.webp",
+    url: "https://raiden-56.github.io/towpilot/",
+    repo: "https://github.com/raiden-56/towpilot",
+    source: "GitHub",
+    publishedAt: "2026-10-29",
+    category: "Business",
+    featured: true,
+    description:
+      "Towing & roadside-assistance platform for India: SOS app, guided driver app and dispatch & finance back office.",
+    tags: ["Roadside assistance", "Dispatch", "Maps"],
+  },
+  {
+    name: "collabspace",
+    title: "CollabSpace",
+    image: "/projects/collabspace/02-canvas-brainstorm.webp",
+    url: "https://raiden-56.github.io/collabspace/",
+    repo: "https://github.com/raiden-56/collabspace",
+    source: "GitHub",
+    publishedAt: "2026-10-29",
+    category: "Productivity",
+    featured: true,
+    description:
+      "Real-time collaboration studio: infinite canvas, live docs, Kanban and timeline tasks, meetings with AI summaries, chat.",
+    tags: ["Collaboration", "Next.js", "Yjs"],
+  },
+  {
+    name: "crewdesk",
+    title: "CrewDesk",
+    image: "/projects/crewdesk/01-overview.webp",
+    url: "https://raiden-56.github.io/CrewDesk/",
+    repo: "https://github.com/raiden-56/CrewDesk",
+    source: "GitHub",
+    publishedAt: "2026-10-29",
+    category: "Productivity",
+    featured: true,
+    description:
+      "Manage AI agents like staff: roles, tools, knowledge, visual workflows, human approvals, budgets and an audit trail.",
+    tags: ["AI agents", "Workflows", "Approvals"],
   },
   {
     name: "ganesh-mesta",

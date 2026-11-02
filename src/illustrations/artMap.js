@@ -14,6 +14,7 @@ import WorkRounded from '@mui/icons-material/WorkRounded';
 import { PALETTES } from './kit';
 import * as A from './scenesA';
 import * as B from './scenesB';
+import * as C from './scenesC';
 
 const art = (Scene, palette, bg, decor, shadow = true) => ({ Scene, palette, bg, decor, shadow });
 
@@ -57,6 +58,11 @@ const ART = {
   'generate-bar-code': art(B.BarcodeScan, 'amber', 'grid', 'dots'),
   referlooop: art(B.ReferralLoop, 'rose', 'rings', 'confetti'),
   homehub: art(B.HomeDashboard, 'forest', 'arch', 'leaves'),
+  smartnest: art(C.SmartHome, 'sage', 'circle', 'sparkle'),
+  towpilot: art(C.TowTruck, 'amber', 'hills', 'clouds', false),
+  collabspace: art(C.LiveCanvas, 'indigo', 'squares', 'dots'),
+  crewdesk: art(C.AgentTeam, 'violet', 'rings', 'stars'),
+  spaceflow: art(C.OfficeFloors, 'sky', 'grid', 'lines'),
 };
 
 const CATEGORY_ICON = {

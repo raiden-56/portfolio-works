@@ -47,6 +47,8 @@ export const PALETTES = {
   slate: pal('#475569', '#1e293b', '#cbd5e1', '#f4f6f9', '#e2e8f0', '#0e1217', '#253041', '#f97316', '#fed7aa'),
   // HomeHub's own green with its orange dot
   forest: pal('#2f6b45', '#1d4a2f', '#b5dcc2', '#eef7f0', '#d4ecdb', '#0a1a10', '#173623', '#f59e0b', '#fde68a'),
+  // SmartNest's sage green with a warm lamp yellow
+  sage: pal('#386641', '#24452b', '#c3dbbd', '#f2f7ef', '#dcebd5', '#0b150c', '#1b3120', '#f2a541', '#fde3b5'),
 };
 
 export const d = (s) => ({ animationDelay: `${s}s` });

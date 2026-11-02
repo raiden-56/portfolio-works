@@ -22,7 +22,7 @@ import GeneralTab from '../components/detail/GeneralTab';
 import ScreenshotsTab from '../components/detail/ScreenshotsTab';
 import { FeaturesTab, HowToTab, SolvesTab, WhyTab } from '../components/detail/StoryTabs';
 import { ComingSoon } from '../components/detail/shared';
-import { getDetails } from '../data/details';
+import { getDetails } from '../data/details/content';
 import { HEADER_HEIGHT } from '../theme';
 import {
   selectFavoriteIds,
