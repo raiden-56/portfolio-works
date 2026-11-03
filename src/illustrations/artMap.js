@@ -63,6 +63,7 @@ const ART = {
   collabspace: art(C.LiveCanvas, 'indigo', 'squares', 'dots'),
   crewdesk: art(C.AgentTeam, 'violet', 'rings', 'stars'),
   spaceflow: art(C.OfficeFloors, 'sky', 'grid', 'lines'),
+  leaveflow: art(C.LeaveHandover, 'teal', 'blob', 'sparkle'),
 };
 
 const CATEGORY_ICON = {

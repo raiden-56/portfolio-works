@@ -318,3 +318,66 @@ export function OfficeFloors({ p }) {
     </g>
   );
 }
+
+/** A leave calendar with the days off picked out, the person going on leave (suitcase packed)
+ *  handing work across a moving arc to their backup, and the request ticked as approved — LeaveFlow. */
+export function LeaveHandover({ p }) {
+  const leave = [6, 7, 8];
+  return (
+    <g>
+      {/* Handover arc from the person on leave to their backup */}
+      <path className="ill-march" d="M92 96 C150 34 250 34 308 92" fill="none" stroke={p.main} strokeWidth={3} strokeDasharray="7 7" strokeLinecap="round" />
+      <path d="M298 80 L310 94 L292 98" fill="none" stroke={p.main} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+      <At x={200} y={50} cls="ill-float" delay={-1}>
+        <rect x={-22} y={-14} width={44} height={28} rx={6} fill={W} />
+        <rect x={-14} y={-7} width={20} height={4} rx={2} fill={p.main} />
+        <rect x={-14} y={1} width={28} height={4} rx={2} fill={LINE} />
+      </At>
+
+      {/* Leave calendar */}
+      <g className="ill-float-sm">
+        <rect x={132} y={88} width={136} height={142} rx={12} fill={W} />
+        <rect x={132} y={88} width={136} height={28} rx={12} fill={p.main} />
+        <rect x={132} y={104} width={136} height={12} fill={p.main} />
+        <rect x={154} y={80} width={6} height={16} rx={3} fill={p.mainDark} />
+        <rect x={240} y={80} width={6} height={16} rx={3} fill={p.mainDark} />
+        <rect x={146} y={98} width={40} height={6} rx={3} fill={W} opacity={0.85} />
+        {Array.from({ length: 20 }, (_, i) => {
+          const on = leave.includes(i);
+          return (
+            <rect
+              key={i}
+              className={on ? 'ill-pulse' : undefined}
+              style={on ? d((i - 6) * 0.3) : undefined}
+              x={144 + (i % 5) * 23}
+              y={126 + Math.floor(i / 5) * 24}
+              width={19}
+              height={18}
+              rx={4}
+              fill={on ? (i === 7 ? p.accent : p.mainLight) : SURF}
+            />
+          );
+        })}
+      </g>
+
+      {/* Person going on leave, suitcase packed */}
+      <Avatar x={72} y={116} r={20} bg={p.accent} fg={W} />
+      <At x={72} y={196} cls="ill-bob">
+        <rect x={-10} y={-30} width={20} height={12} rx={5} fill="none" stroke={p.mainDark} strokeWidth={4} />
+        <rect x={-24} y={-20} width={48} height={38} rx={8} fill={p.mainDark} />
+        <rect x={-8} y={-20} width={4} height={38} fill={p.main} />
+        <rect x={4} y={-20} width={4} height={38} fill={p.main} />
+      </At>
+
+      {/* Backup colleague */}
+      <Avatar x={328} y={112} r={20} bg={p.main} fg={W} />
+
+      {/* Approved */}
+      <At x={326} y={196} cls="ill-pop">
+        <circle r={28} fill={W} />
+        <circle r={20} fill={p.mainLight} />
+        <path className="ill-draw" d="M-9 0 l6 6 l12 -13" fill="none" stroke={p.mainDark} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+      </At>
+    </g>
+  );
+}

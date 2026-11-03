@@ -14,6 +14,7 @@ export const FAVORITE_PROJECTS = [
   "tripore",
   "organization-tree",
   "homehub",
+  "leaveflow",
   "spaceflow",
   "smartnest",
   "towpilot",
@@ -34,6 +35,20 @@ export const CATEGORIES = [
 ];
 
 const raw = [
+  {
+    name: "leaveflow",
+    title: "LeaveFlow",
+    image: null,
+    url: "https://raiden-56.github.io/leaveflow/#/login",
+    repo: "https://github.com/raiden-56/leaveflow",
+    source: "GitHub",
+    publishedAt: "2026-11-03",
+    category: "Business",
+    featured: true,
+    description:
+      "Leave & work-handover portal: every request names a backup, managers approve with cover in view, Excel-backed.",
+    tags: ["Leave management", "Work handover", "Excel"],
+  },
   {
     name: "spaceflow",
     title: "SpaceFlow",
