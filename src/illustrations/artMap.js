@@ -64,6 +64,7 @@ const ART = {
   crewdesk: art(C.AgentTeam, 'violet', 'rings', 'stars'),
   spaceflow: art(C.OfficeFloors, 'sky', 'grid', 'lines'),
   leaveflow: art(C.LeaveHandover, 'teal', 'blob', 'sparkle'),
+  claimpilot: art(C.WarrantyShield, 'forest', 'rings', 'stars'),
 };
 
 const CATEGORY_ICON = {

@@ -14,6 +14,7 @@ export const FAVORITE_PROJECTS = [
   "tripore",
   "organization-tree",
   "homehub",
+  "claimpilot",
   "leaveflow",
   "spaceflow",
   "smartnest",
@@ -35,6 +36,20 @@ export const CATEGORIES = [
 ];
 
 const raw = [
+  {
+    name: "claimpilot",
+    title: "ClaimPilot",
+    image: null,
+    url: "https://raiden-56.github.io/ClaimPilot/",
+    repo: "https://github.com/raiden-56/ClaimPilot",
+    source: "GitHub",
+    publishedAt: "2026-11-04",
+    category: "Productivity",
+    featured: true,
+    description:
+      "Track what you own, every invoice and warranty countdown, and get guided through claims, letters and escalations.",
+    tags: ["Warranty", "Claims", "Full-stack"],
+  },
   {
     name: "leaveflow",
     title: "LeaveFlow",

@@ -381,3 +381,66 @@ export function LeaveHandover({ p }) {
     </g>
   );
 }
+
+/** A TV covered by a warranty shield that ticks itself, the purchase invoice, a warranty countdown
+ *  ring and a claim moving through its status steps — ClaimPilot's products, warranties and claims. */
+export function WarrantyShield({ p }) {
+  const steps = [0, 1, 2];
+  return (
+    <g>
+      {/* Product: a TV with its coverage bar on screen */}
+      <g className="ill-float-sm">
+        <rect x={128} y={74} width={146} height={100} rx={10} fill={INK} />
+        <rect x={136} y={82} width={130} height={84} rx={6} fill={W} />
+        <rect x={148} y={96} width={52} height={7} rx={3.5} fill={p.main} />
+        <rect x={148} y={110} width={80} height={5} rx={2.5} fill={LINE} />
+        <rect x={148} y={136} width={104} height={8} rx={4} fill={SURF} />
+        <rect className="ill-grow" x={148} y={136} width={70} height={8} rx={4} fill={p.main} />
+        <rect x={148} y={150} width={36} height={5} rx={2.5} fill={MUTE} />
+        <rect x={192} y={174} width={18} height={18} fill={INK} />
+        <rect x={168} y={190} width={66} height={8} rx={4} fill={INK} />
+      </g>
+
+      {/* Covered: shield with a tick */}
+      <At x={262} y={186} cls="ill-pop">
+        <path d="M0 -30 L26 -20 V2 C26 20 13 30 0 36 C-13 30 -26 20 -26 2 V-20 Z" fill={p.main} />
+        <path d="M0 -22 L18 -15 V2 C18 15 9 23 0 27 C-9 23 -18 15 -18 2 V-15 Z" fill={p.mainDark} />
+        <path className="ill-draw" d="M-9 2 l6 6 l12 -14" fill="none" stroke={W} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+      </At>
+
+      {/* Purchase invoice */}
+      <At x={78} y={150} cls="ill-float" delay={-1.2}>
+        <path d="M-32 -48 H32 V40 l-8 6 l-8 -6 l-8 6 l-8 -6 l-8 6 l-8 -6 l-8 6 l-8 -6 Z" fill={W} />
+        <rect x={-22} y={-36} width={28} height={6} rx={3} fill={p.main} />
+        {[0, 1, 2].map((i) => (
+          <rect key={i} x={-22} y={-20 + i * 12} width={i === 1 ? 30 : 42} height={5} rx={2.5} fill={LINE} />
+        ))}
+        <text x={-22} y={30} fontSize={11} fontWeight={700} fill={INK} fontFamily={SANS}>
+          ₹42,990
+        </text>
+      </At>
+
+      {/* Warranty countdown */}
+      <At x={332} y={124} cls="ill-float" delay={-2.2}>
+        <circle r={34} fill={W} />
+        <circle r={25} fill="none" stroke={SURF} strokeWidth={7} />
+        <circle className="ill-draw" r={25} fill="none" stroke={p.accent} strokeWidth={7} strokeLinecap="round" pathLength={1} transform="rotate(-90)" />
+        <text y={3} textAnchor="middle" fontSize={15} fontWeight={800} fill={INK} fontFamily={SANS}>
+          86
+        </text>
+        <text y={15} textAnchor="middle" fontSize={8} fontWeight={600} fill={MUTE} fontFamily={SANS}>
+          days
+        </text>
+      </At>
+
+      {/* Claim moving through its statuses */}
+      <At x={70} y={238} cls="ill-float" delay={-0.6}>
+        <rect x={-40} y={-18} width={96} height={36} rx={10} fill={W} />
+        <path d="M-24 0 H40" stroke={LINE} strokeWidth={3} />
+        {steps.map((i) => (
+          <circle key={i} className={i === 2 ? 'ill-pulse' : undefined} cx={-24 + i * 32} cy={0} r={7} fill={i < 2 ? p.main : p.accent} />
+        ))}
+      </At>
+    </g>
+  );
+}
