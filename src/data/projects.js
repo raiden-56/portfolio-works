@@ -37,6 +37,20 @@ export const CATEGORIES = [
 
 const raw = [
   {
+    name: "studyhub",
+    title: "Study Hub",
+    image: null,
+    url: "https://raiden-56.github.io/studyhub/",
+    repo: "https://github.com/raiden-56/studyhub",
+    source: "GitHub",
+    publishedAt: "2026-11-04",
+    category: "Education",
+    featured: true,
+    description:
+      "A private course library for 7 programming decks: modules, a watermarked preview, quizzes, progress and encrypted files.",
+    tags: ["Courses", "Quizzes", "Web Crypto"],
+  },
+  {
     name: "claimpilot",
     title: "ClaimPilot",
     image: null,

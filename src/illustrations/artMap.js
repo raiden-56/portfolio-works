@@ -65,6 +65,7 @@ const ART = {
   spaceflow: art(C.OfficeFloors, 'sky', 'grid', 'lines'),
   leaveflow: art(C.LeaveHandover, 'teal', 'blob', 'sparkle'),
   claimpilot: art(C.WarrantyShield, 'forest', 'rings', 'stars'),
+  studyhub: art(C.CourseDeck, 'orange', 'arch', 'sparkle'),
 };
 
 const CATEGORY_ICON = {

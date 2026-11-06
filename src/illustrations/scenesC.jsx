@@ -444,3 +444,78 @@ export function WarrantyShield({ p }) {
     </g>
   );
 }
+
+/** A stack of course slides locked behind a padlock, a practice-quiz card ticking its answer, a progress
+ *  ring and an envelope bringing a download — Study Hub's private course library. */
+export function CourseDeck({ p }) {
+  const options = [0, 1, 2];
+  return (
+    <g>
+      {/* Slide deck */}
+      <g className="ill-float-sm">
+        <rect x={150} y={70} width={134} height={92} rx={8} fill={p.mainLight} transform="rotate(6 217 116)" />
+        <rect x={142} y={76} width={134} height={92} rx={8} fill={p.shape} transform="rotate(-4 209 122)" />
+        <rect x={134} y={84} width={138} height={96} rx={8} fill={W} />
+        <rect x={134} y={84} width={138} height={20} rx={8} fill={p.main} />
+        <rect x={134} y={96} width={138} height={8} fill={p.main} />
+        <rect x={146} y={90} width={52} height={7} rx={3.5} fill={W} opacity={0.9} />
+        {[0, 1, 2].map((i) => (
+          <g key={i}>
+            <circle cx={150} cy={118 + i * 14} r={3} fill={p.accent} />
+            <rect x={158} y={115 + i * 14} width={i === 1 ? 44 : 58} height={6} rx={3} fill={LINE} />
+          </g>
+        ))}
+        {[16, 26, 20, 32].map((h, i) => (
+          <rect key={i} className="ill-bar" style={d(i * 0.25)} x={226 + i * 10} y={168 - h} width={7} height={h} rx={2} fill={i === 3 ? p.accent : p.main} />
+        ))}
+      </g>
+
+      {/* Padlock: the decks only open after signing in */}
+      <At x={270} y={180} cls="ill-pulse">
+        <path d="M-9 -4 V-10 a9 9 0 0 1 18 0 V-4" fill="none" stroke={p.mainDark} strokeWidth={4} />
+        <rect x={-14} y={-5} width={28} height={22} rx={5} fill={p.mainDark} />
+        <circle cy={4} r={3} fill={W} />
+        <rect x={-1.25} y={5} width={2.5} height={6} rx={1} fill={W} />
+      </At>
+
+      {/* Practice quiz */}
+      <At x={76} y={146} cls="ill-float" delay={-1.4}>
+        <rect x={-42} y={-52} width={84} height={104} rx={8} fill={W} />
+        <rect x={-30} y={-40} width={60} height={7} rx={3.5} fill={INK} opacity={0.75} />
+        <rect x={-30} y={-28} width={40} height={5} rx={2.5} fill={MUTE} />
+        {options.map((i) => {
+          const y = -6 + i * 18;
+          const right = i === 1;
+          return (
+            <g key={i}>
+              <rect x={-32} y={y - 7} width={64} height={14} rx={7} fill={right ? p.mainLight : SURF} />
+              <circle cx={-23} cy={y} r={4} fill={right ? p.main : W} stroke={right ? 'none' : LINE} strokeWidth={1.5} />
+              <rect x={-14} y={y - 2} width={right ? 34 : 28} height={4} rx={2} fill={right ? p.mainDark : LINE} />
+            </g>
+          );
+        })}
+        <path className="ill-draw" d="M14 33 l5 5 l9 -11" fill="none" stroke={p.main} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+      </At>
+
+      {/* Progress ring */}
+      <At x={330} y={110} cls="ill-float" delay={-2.4}>
+        <circle r={32} fill={W} />
+        <circle r={23} fill="none" stroke={SURF} strokeWidth={7} />
+        <circle className="ill-draw" r={23} fill="none" stroke={p.main} strokeWidth={7} strokeLinecap="round" pathLength={1} transform="rotate(-90)" />
+        <text y={5} textAnchor="middle" fontSize={13} fontWeight={800} fill={INK} fontFamily={SANS}>
+          72%
+        </text>
+      </At>
+
+      {/* Emailed download */}
+      <At x={332} y={214} cls="ill-float" delay={-0.5}>
+        <rect x={-30} y={-20} width={60} height={40} rx={7} fill={W} />
+        <path d="M-30 -14 L0 6 L30 -14" fill="none" stroke={p.main} strokeWidth={3} strokeLinejoin="round" />
+        <g className="ill-bob">
+          <circle cx={24} cy={-20} r={11} fill={p.accent} />
+          <path d="M24 -26 V-14 M19 -19 L24 -14 L29 -19" fill="none" stroke={W} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      </At>
+    </g>
+  );
+}
