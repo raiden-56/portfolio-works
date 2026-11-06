@@ -14,6 +14,7 @@ export const FAVORITE_PROJECTS = [
   "tripore",
   "organization-tree",
   "homehub",
+  "studyhub",
   "claimpilot",
   "leaveflow",
   "spaceflow",
