@@ -5,6 +5,7 @@
 import AppsRounded from '@mui/icons-material/AppsRounded';
 import BuildRounded from '@mui/icons-material/BuildRounded';
 import FlightRounded from '@mui/icons-material/FlightRounded';
+import LanguageRounded from '@mui/icons-material/LanguageRounded';
 import PersonRounded from '@mui/icons-material/PersonRounded';
 import SavingsRounded from '@mui/icons-material/SavingsRounded';
 import SchoolRounded from '@mui/icons-material/SchoolRounded';
@@ -66,10 +67,15 @@ const ART = {
   leaveflow: art(C.LeaveHandover, 'teal', 'blob', 'sparkle'),
   claimpilot: art(C.WarrantyShield, 'forest', 'rings', 'stars'),
   studyhub: art(C.CourseDeck, 'orange', 'arch', 'sparkle'),
+  birthdaybook: art(C.BirthdayCake, 'plum', 'bubbles', 'confetti'),
+  'karavali-go': art(C.CoastalAuto, 'teal', 'hills', 'clouds', false),
+  'pre-wedding-photoshoot': art(C.CoupleFrame, 'olive', 'circle', 'sparkle'),
+  payana: art(C.RouteQuotes, 'laterite', 'grid', 'dots'),
 };
 
 const CATEGORY_ICON = {
   Portfolio: PersonRounded,
+  Website: LanguageRounded,
   Business: WorkRounded,
   Education: SchoolRounded,
   'E-commerce': StorefrontRounded,

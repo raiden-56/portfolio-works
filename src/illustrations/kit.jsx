@@ -49,6 +49,12 @@ export const PALETTES = {
   forest: pal('#2f6b45', '#1d4a2f', '#b5dcc2', '#eef7f0', '#d4ecdb', '#0a1a10', '#173623', '#f59e0b', '#fde68a'),
   // SmartNest's sage green with a warm lamp yellow
   sage: pal('#386641', '#24452b', '#c3dbbd', '#f2f7ef', '#dcebd5', '#0b150c', '#1b3120', '#f2a541', '#fde3b5'),
+  // BirthdayBook's plum with a candle-flame amber
+  plum: pal('#7b4f82', '#563b5c', '#dcc6df', '#f7f1f8', '#ecdcee', '#170f19', '#33213a', '#f59e0b', '#fde68a'),
+  // Saanjh Studio's olive with a dusk-orange sun (saanjh = dusk)
+  olive: pal('#777a68', '#4e5043', '#d9dacb', '#f6f5ef', '#e7e6da', '#13140f', '#2a2b23', '#e08a4f', '#f8d3b6'),
+  // Payana's laterite red with a coastal teal
+  laterite: pal('#b8411f', '#7f2c14', '#f2c8b8', '#fdf3ef', '#f8ddd2', '#1f0c07', '#43190e', '#0e7c6b', '#a6e3d6'),
 };
 
 export const d = (s) => ({ animationDelay: `${s}s` });

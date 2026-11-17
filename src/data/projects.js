@@ -26,6 +26,7 @@ export const FAVORITE_PROJECTS = [
 
 export const CATEGORIES = [
   "Portfolio",
+  "Website",
   "Business",
   "Education",
   "E-commerce",
@@ -37,6 +38,62 @@ export const CATEGORIES = [
 ];
 
 const raw = [
+  {
+    name: "payana",
+    title: "Payana",
+    image: null,
+    url: "https://github.com/raiden-56/payana",
+    repo: "https://github.com/raiden-56/payana",
+    source: "GitHub",
+    publishedAt: "2026-11-10",
+    category: "Travel",
+    featured: true,
+    description:
+      "Gokarna ride marketplace: ask once, compare verified local drivers’ quotes and book. Angular, NestJS and PostGIS.",
+    tags: ["Angular", "NestJS", "PostGIS"],
+  },
+  {
+    name: "pre-wedding-photoshoot",
+    title: "Saanjh Studio",
+    image: null,
+    url: "https://raiden-56.github.io/pre-wedding-photoshoot/",
+    repo: "https://github.com/raiden-56/pre-wedding-photoshoot",
+    source: "GitHub",
+    publishedAt: "2026-11-16",
+    category: "Website",
+    featured: true,
+    description:
+      "Pre-wedding & wedding photography site with a studio dashboard, private client galleries and a collage maker.",
+    tags: ["Next.js", "Prisma", "PostgreSQL"],
+  },
+  {
+    name: "karavali-go",
+    title: "Karavali Go",
+    image: null,
+    url: "https://raiden-56.github.io/karavali-go/",
+    repo: "https://github.com/raiden-56/karavali-go",
+    source: "GitHub",
+    publishedAt: "2026-11-14",
+    category: "Travel",
+    featured: true,
+    description:
+      "Hyperlocal ride marketplace for Gokarna: verified drivers on a map, quote comparison, driver portal and admin console.",
+    tags: ["Angular", "NestJS", "PostGIS"],
+  },
+  {
+    name: "birthdaybook",
+    title: "BirthdayBook",
+    image: null,
+    url: "https://raiden-56.github.io/birthdaybook/",
+    repo: "https://github.com/raiden-56/birthdaybook",
+    source: "GitHub",
+    publishedAt: "2026-11-17",
+    category: "Productivity",
+    featured: true,
+    description:
+      "Private birthday and anniversary manager for web, Android and iPhone: reminders, gifts, cards and Excel import/export.",
+    tags: ["Next.js", "Capacitor", "PWA"],
+  },
   {
     name: "studyhub",
     title: "Study Hub",
@@ -267,7 +324,7 @@ const raw = [
     ),
     source: "GitHub",
     publishedAt: "2026-10-22",
-    category: "Education",
+    category: "Website",
     description:
       "School website with admissions, academics, facilities, gallery and contact details.",
     tags: ["School", "Website"],
@@ -281,7 +338,7 @@ const raw = [
     ),
     source: "GitHub",
     publishedAt: "2026-10-21",
-    category: "Education",
+    category: "Website",
     description: "A bright, friendly website for a kids’ school / play school.",
     tags: ["Kids", "School"],
   },
@@ -294,7 +351,7 @@ const raw = [
     ),
     source: "GitHub",
     publishedAt: "2026-10-16",
-    category: "Education",
+    category: "Website",
     description:
       "College website covering courses, departments, admissions and campus life.",
     tags: ["College", "Website"],
@@ -396,7 +453,7 @@ const raw = [
     source: "GitHub",
     framework: "Next.js",
     publishedAt: "2026-08-24",
-    category: "Business",
+    category: "Website",
     description:
       "Homestay / hotel website with rooms, amenities and booking enquiries.",
     tags: ["Hospitality", "Next.js"],
@@ -547,7 +604,7 @@ const raw = [
     ),
     source: "Netlify Drop",
     publishedAt: "2026-01-05",
-    category: "Business",
+    category: "Website",
     description: "Tech landing page built around smooth parallax scrolling.",
     tags: ["Parallax", "Landing page"],
   },
@@ -637,7 +694,7 @@ const raw = [
     ),
     source: "Netlify Drop",
     publishedAt: "2024-12-26",
-    category: "Utilities",
+    category: "Website",
     description: "Search any city and get the current weather and forecast.",
     tags: ["Weather", "API"],
   },

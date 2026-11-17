@@ -1,5 +1,5 @@
 // One-of-a-kind scenes, part 3 (projects added Nov 2026). Each takes the project's palette `p`.
-import { At, Avatar, GOLD, GOLD_D, INK, LINE, MUTE, PIN, RED, SURF, W, d } from './kit';
+import { At, Avatar, GOLD, GOLD_D, HEART, INK, LEAF_PATH, LINE, MUTE, PIN, RED, SURF, W, d } from './kit';
 
 const SANS = 'Poppins, sans-serif';
 
@@ -515,6 +515,229 @@ export function CourseDeck({ p }) {
           <circle cx={24} cy={-20} r={11} fill={p.accent} />
           <path d="M24 -26 V-14 M19 -19 L24 -14 L29 -19" fill="none" stroke={W} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
         </g>
+      </At>
+    </g>
+  );
+}
+
+/** A polaroid of a couple at sunset under a beating heart, a turning lens aperture and a film strip
+ *  sliding past — Saanjh Studio's pre-wedding photography. */
+export function CoupleFrame({ p }) {
+  const blades = [0, 60, 120, 180, 240, 300];
+  return (
+    <g>
+      {/* Polaroid */}
+      <At x={200} y={142} r={-4} cls="ill-float-sm">
+        <rect x={-74} y={-86} width={148} height={170} rx={6} fill={W} />
+        <rect x={-62} y={-74} width={124} height={118} rx={4} fill={p.mainLight} />
+        <circle className="ill-glow" cx={30} cy={-34} r={20} fill={p.accent} />
+        <path d="M-62 20 C-30 0 -6 6 14 -2 C34 -10 50 0 62 8 V44 H-62 Z" fill={p.main} />
+        {/* Couple: dress and suit silhouettes */}
+        <circle cx={-14} cy={-14} r={7} fill={p.mainDark} />
+        <path d="M-14 -7 L-26 30 H-2 Z" fill={p.mainDark} />
+        <circle cx={10} cy={-17} r={7} fill={p.mainDark} />
+        <rect x={3} y={-10} width={14} height={40} rx={4} fill={p.mainDark} />
+        <At x={-2} y={-34} s={0.7} cls="ill-pulse">
+          <path d={HEART} fill={RED} />
+        </At>
+        <rect x={-40} y={58} width={80} height={6} rx={3} fill={LINE} />
+      </At>
+
+      {/* Lens aperture */}
+      <At x={74} y={196} cls="ill-spin">
+        <circle r={30} fill={INK} />
+        <circle r={22} fill={p.mainDark} />
+        {blades.map((a) => (
+          <path key={a} d="M0 0 L22 -4 L14 16 Z" fill={p.main} opacity={0.85} transform={`rotate(${a})`} />
+        ))}
+        <circle r={7} fill={INK} />
+      </At>
+
+      {/* Film strip */}
+      <At x={328} y={212} r={-6}>
+        <g className="ill-drift">
+          <rect x={-56} y={-24} width={112} height={48} rx={4} fill={INK} />
+          {Array.from({ length: 7 }, (_, i) => (
+            <g key={i}>
+              <rect x={-50 + i * 15} y={-20} width={7} height={5} rx={1} fill={W} opacity={0.8} />
+              <rect x={-50 + i * 15} y={15} width={7} height={5} rx={1} fill={W} opacity={0.8} />
+            </g>
+          ))}
+          {[0, 1, 2].map((i) => (
+            <rect key={i} x={-48 + i * 33} y={-11} width={29} height={22} rx={2} fill={i === 1 ? p.accent : p.mainLight} />
+          ))}
+        </g>
+      </At>
+    </g>
+  );
+}
+
+/** A birthday cake with flickering candles, a calendar date coming up, a gift and a ringing reminder
+ *  bell — BirthdayBook's birthdays and anniversaries, kept on your own device. */
+export function BirthdayCake({ p }) {
+  const candles = [178, 200, 222];
+  return (
+    <g>
+      {/* Cake */}
+      <g className="ill-float-sm">
+        <ellipse cx={200} cy={232} rx={78} ry={9} fill={W} />
+        <rect x={136} y={176} width={128} height={54} rx={8} fill={p.main} />
+        <rect x={156} y={136} width={88} height={44} rx={8} fill={p.mainLight} />
+        <path d="M156 146 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 16 0 q4 6 8 2 V140 a6 6 0 0 0 -6 -6 H162 a6 6 0 0 0 -6 6 Z" fill={W} />
+        {[150, 176, 202, 228].map((x) => (
+          <circle key={x} cx={x + 10} cy={204} r={4} fill={p.accent} />
+        ))}
+        {candles.map((x, i) => (
+          <g key={x}>
+            <rect x={x - 4} y={108} width={8} height={28} rx={3} fill={W} />
+            <rect x={x - 4} y={116} width={8} height={4} fill={p.accent} />
+            <rect x={x - 4} y={126} width={8} height={4} fill={p.accent} />
+            <ellipse className="ill-blink" style={d(i * 0.3)} cx={x} cy={100} rx={4.5} ry={7} fill={GOLD} />
+          </g>
+        ))}
+      </g>
+
+      {/* Calendar date */}
+      <At x={76} y={126} cls="ill-float" delay={-1.3}>
+        <rect x={-34} y={-34} width={68} height={68} rx={8} fill={W} />
+        <rect x={-34} y={-34} width={68} height={18} rx={8} fill={p.accent} />
+        <rect x={-34} y={-24} width={68} height={8} fill={p.accent} />
+        <text y={20} textAnchor="middle" fontSize={26} fontWeight={800} fill={INK} fontFamily={SANS}>
+          24
+        </text>
+      </At>
+
+      {/* Gift */}
+      <At x={330} y={206} cls="ill-bob">
+        <rect x={-28} y={-18} width={56} height={40} rx={4} fill={p.accent} />
+        <rect x={-32} y={-28} width={64} height={14} rx={4} fill={p.accent} />
+        <rect x={-5} y={-28} width={10} height={50} fill={W} />
+        <path d="M0 -28 C-14 -44 -26 -32 -10 -28 M0 -28 C14 -44 26 -32 10 -28" fill="none" stroke={W} strokeWidth={4} strokeLinecap="round" />
+      </At>
+
+      {/* Reminder bell */}
+      <At x={326} y={84} r={0} cls="ill-swing">
+        <path d="M-15 10 C-15 -8 -10 -18 0 -18 C10 -18 15 -8 15 10 L19 15 H-19 Z" fill={GOLD} />
+        <circle cy={18} r={4.5} fill={GOLD_D} />
+        <circle cx={13} cy={-13} r={6} fill={RED} />
+      </At>
+    </g>
+  );
+}
+
+/** An auto-rickshaw driving a coastal road past a palm and the sea, a pickup pin and two driver
+ *  quotes with one picked — Karavali Go's local rides around Gokarna. */
+export function CoastalAuto({ p }) {
+  const wheel = (cx, cy) => (
+    <g key={cx}>
+      <circle cx={cx} cy={cy} r={11} fill={INK} />
+      <g className="ill-wheel">
+        <circle cx={cx} cy={cy} r={4.5} fill={W} />
+        <rect x={cx - 1.25} y={cy - 4.5} width={2.5} height={9} fill={MUTE} />
+      </g>
+    </g>
+  );
+  const quotes = [
+    { y: 76, price: '₹420', on: false, delay: -0.8 },
+    { y: 124, price: '₹350', on: true, delay: -2 },
+  ];
+  return (
+    <g>
+      {/* Sea and road */}
+      <g className="ill-drift">
+        <path d="M-20 214 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V232 H-20 Z" fill={p.mainLight} />
+      </g>
+      <rect x={0} y={232} width={400} height={68} fill={INK} opacity={0.85} />
+      <g className="ill-road">
+        {Array.from({ length: 9 }, (_, i) => (
+          <rect key={i} x={i * 60} y={262} width={30} height={5} rx={2.5} fill={W} opacity={0.8} />
+        ))}
+      </g>
+
+      {/* Palm */}
+      <path d="M68 232 C62 196 58 168 66 130" fill="none" stroke={p.mainDark} strokeWidth={7} strokeLinecap="round" />
+      {[-70, -30, 20, 60, 100].map((r) => (
+        <At key={r} x={66} y={132} r={r} s={0.55} cls="ill-sway">
+          <path d={LEAF_PATH} fill={p.main} />
+        </At>
+      ))}
+
+      {/* Auto-rickshaw */}
+      <g className="ill-bob">
+        {/* Canopy on its pillars; the sides are open */}
+        <path d="M168 182 C168 158 184 144 212 144 H252 C264 144 270 152 270 164 V182 Z" fill={INK} />
+        <rect x={172} y={160} width={5} height={30} fill={INK} />
+        <rect x={262} y={160} width={5} height={30} fill={INK} />
+        <path d="M178 150 C186 146 196 144 206 144 V156 H174 Z" fill={W} opacity={0.75} />
+        {/* Driver and passenger bench */}
+        <circle cx={196} cy={166} r={7} fill={p.mainDark} />
+        <rect x={228} y={176} width={30} height={8} rx={3} fill={p.mainDark} />
+        {/* Body with the headlight on its nose */}
+        <path d="M148 224 L156 196 C158 188 164 184 174 184 H266 C272 184 276 190 276 198 V224 Z" fill={p.accent} strokeLinejoin="round" />
+        <rect x={180} y={196} width={86} height={5} rx={2.5} fill={W} opacity={0.6} />
+        <circle cx={156} cy={204} r={5} fill={GOLD} />
+        {wheel(166, 226)}
+        {wheel(252, 226)}
+      </g>
+
+      {/* Pickup pin */}
+      <At x={214} y={124} cls="ill-bounce">
+        <path d={PIN} fill={p.main} />
+        <circle cy={-27} r={6} fill={W} />
+      </At>
+
+      {/* Driver quotes */}
+      {quotes.map((q) => (
+        <At key={q.y} x={330} y={q.y} cls="ill-float" delay={q.delay}>
+          <rect x={-40} y={-18} width={80} height={36} rx={8} fill={q.on ? p.main : W} />
+          <circle cx={-24} cy={0} r={9} fill={q.on ? W : p.mainLight} />
+          <text x={-8} y={5} fontSize={13} fontWeight={800} fill={q.on ? W : INK} fontFamily={SANS}>
+            {q.price}
+          </text>
+        </At>
+      ))}
+    </g>
+  );
+}
+
+/** A trip drawn on a map between two pins, three drivers' quotes with the best one chosen, and a
+ *  verified-driver shield — Payana's ask once, compare quotes, book. */
+export function RouteQuotes({ p }) {
+  const quotes = [
+    { y: 82, on: false },
+    { y: 132, on: true },
+    { y: 182, on: false },
+  ];
+  return (
+    <g>
+      {/* Map with the route */}
+      <g className="ill-float-sm">
+        <rect x={94} y={64} width={170} height={176} rx={8} fill={W} />
+        <path d="M94 120 H264 M94 182 H264 M150 64 V240 M214 64 V240" stroke={SURF} strokeWidth={9} />
+        <path d="M94 120 H264 M94 182 H264 M150 64 V240 M214 64 V240" stroke={LINE} strokeWidth={1.5} />
+        <path className="ill-march" d="M122 214 C130 170 150 182 170 150 S220 120 236 96" fill="none" stroke={p.main} strokeWidth={4} strokeLinecap="round" strokeDasharray="8 8" />
+        <circle cx={122} cy={214} r={7} fill={p.accent} stroke={W} strokeWidth={3} />
+      </g>
+      <At x={236} y={98} cls="ill-bounce">
+        <path d={PIN} fill={p.main} />
+        <circle cy={-27} r={6} fill={W} />
+      </At>
+
+      {/* Drivers' quotes */}
+      {quotes.map((q, i) => (
+        <At key={q.y} x={326} y={q.y} cls="ill-float" delay={-i * 0.9}>
+          <rect x={-42} y={-19} width={84} height={38} rx={8} fill={q.on ? p.mainLight : W} stroke={q.on ? p.main : 'none'} strokeWidth={2} />
+          <circle cx={-24} cy={0} r={10} fill={q.on ? p.main : MUTE} />
+          <rect x={-8} y={-8} width={34} height={6} rx={3} fill={q.on ? p.mainDark : LINE} />
+          <rect x={-8} y={3} width={22} height={5} rx={2.5} fill={q.on ? p.main : LINE} />
+          {q.on && <path className="ill-draw" d="M28 -2 l4 4 l7 -9" fill="none" stroke={p.mainDark} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />}
+        </At>
+      ))}
+
+      {/* Verified driver */}
+      <At x={70} y={200} cls="ill-pop">
+        <path d="M0 -26 L22 -18 V0 C22 16 11 25 0 30 C-11 25 -22 16 -22 0 V-18 Z" fill={p.main} />
+        <path className="ill-draw" d="M-8 0 l5 5 l11 -12" fill="none" stroke={W} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
       </At>
     </g>
   );
