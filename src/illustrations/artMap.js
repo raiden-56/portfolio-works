@@ -71,6 +71,11 @@ const ART = {
   'karavali-go': art(C.CoastalAuto, 'teal', 'hills', 'clouds', false),
   'pre-wedding-photoshoot': art(C.CoupleFrame, 'olive', 'circle', 'sparkle'),
   payana: art(C.RouteQuotes, 'laterite', 'grid', 'dots'),
+  're-wear': art(C.ClothesScale, 'emerald', 'split', 'sparkle'),
+  'cms-portal': art(C.HeadlessBlocks, 'teal', 'grid', 'dots'),
+  partnerbridge: art(C.BridgeDeal, 'blue', 'circle', 'lines'),
+  windgaurd: art(C.TurbineRoll, 'cyan', 'hills', 'clouds', false),
+  nexora: art(C.SpacesHub, 'mint', 'squares', 'sparkle'),
 };
 
 const CATEGORY_ICON = {

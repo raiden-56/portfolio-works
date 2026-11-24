@@ -1,5 +1,5 @@
 // One-of-a-kind scenes, part 3 (projects added Nov 2026). Each takes the project's palette `p`.
-import { At, Avatar, GOLD, GOLD_D, HEART, INK, LEAF_PATH, LINE, MUTE, PIN, RED, SURF, W, d } from './kit';
+import { At, Avatar, GOLD, GOLD_D, HEART, INK, LEAF_PATH, LINE, MUTE, PIN, RED, SURF, TSHIRT, W, d } from './kit';
 
 const SANS = 'Poppins, sans-serif';
 
@@ -738,6 +738,287 @@ export function RouteQuotes({ p }) {
       <At x={70} y={200} cls="ill-pop">
         <path d="M0 -26 L22 -18 V0 C22 16 11 25 0 30 C-11 25 -22 16 -22 0 V-18 Z" fill={p.main} />
         <path className="ill-draw" d="M-8 0 l5 5 l11 -12" fill="none" stroke={W} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+      </At>
+    </g>
+  );
+}
+
+/** Content blocks being dragged into a page, and the same content leaving through an API to a phone
+ *  and a monitor — Meridian's model once, build visually, deliver anywhere. */
+export function HeadlessBlocks({ p }) {
+  const blocks = [
+    { y: 96, w: 88, c: p.main },
+    { y: 122, w: 64, c: p.mainLight },
+    { y: 148, w: 76, c: p.accentLight },
+  ];
+  return (
+    <g>
+      {/* Page being built */}
+      <g className="ill-float-sm">
+        <rect x={110} y={72} width={120} height={160} rx={8} fill={W} />
+        <rect x={122} y={84} width={60} height={8} rx={4} fill={INK} opacity={0.7} />
+        {blocks.map((b) => (
+          <rect key={b.y} x={122} y={b.y + 4} width={b.w} height={18} rx={4} fill={b.c} />
+        ))}
+        <rect x={122} y={178} width={96} height={42} rx={6} fill="none" stroke={p.main} strokeWidth={2} strokeDasharray="5 5" />
+      </g>
+      {/* Block on its way in */}
+      <At x={150} y={196} cls="ill-drag">
+        <rect x={-30} y={-12} width={60} height={24} rx={5} fill={p.accent} />
+        <rect x={-22} y={-4} width={30} height={4} rx={2} fill={W} />
+        <rect x={-22} y={3} width={20} height={3} rx={1.5} fill={W} opacity={0.7} />
+      </At>
+
+      {/* API out to any frontend */}
+      <At x={268} y={150}>
+        <rect x={-18} y={-18} width={36} height={36} rx={8} fill={INK} />
+        <text y={6} textAnchor="middle" fontSize={16} fontWeight={800} fill={p.accentLight} fontFamily="ui-monospace, Menlo, monospace">
+          {'{}'}
+        </text>
+      </At>
+      <path className="ill-march" d="M286 140 C300 128 306 104 318 96 M286 160 C300 172 306 196 320 204" fill="none" stroke={p.main} strokeWidth={2.5} strokeDasharray="6 6" />
+      <At x={336} y={92} cls="ill-float" delay={-1}>
+        <rect x={-14} y={-24} width={28} height={48} rx={6} fill={INK} />
+        <rect x={-10} y={-18} width={20} height={34} rx={3} fill={W} />
+        <rect x={-6} y={-12} width={12} height={5} rx={2} fill={p.main} />
+        <rect x={-6} y={-3} width={9} height={4} rx={2} fill={LINE} />
+      </At>
+      <At x={344} y={206} cls="ill-float" delay={-2.2}>
+        <rect x={-30} y={-20} width={60} height={38} rx={5} fill={INK} />
+        <rect x={-26} y={-16} width={52} height={30} rx={3} fill={W} />
+        <rect x={-20} y={-11} width={22} height={5} rx={2} fill={p.main} />
+        <rect x={-20} y={-2} width={34} height={4} rx={2} fill={LINE} />
+        <rect x={-6} y={18} width={12} height={6} fill={INK} />
+      </At>
+      <At x={70} y={120} cls="ill-pulse">
+        <rect x={-26} y={-26} width={52} height={52} rx={8} fill={W} />
+        {[0, 1, 2].map((i) => (
+          <rect key={i} x={-16} y={-14 + i * 11} width={i === 1 ? 22 : 32} height={6} rx={3} fill={i === 0 ? p.main : LINE} />
+        ))}
+      </At>
+    </g>
+  );
+}
+
+/** A CCTV wall with live dots, and a hub wiring a home, a hotel and an office together — Nexora's
+ *  one platform for every space. */
+export function SpacesHub({ p }) {
+  const feeds = [0, 1, 2, 3];
+  return (
+    <g>
+      {/* Camera wall */}
+      <g className="ill-float-sm">
+        <rect x={132} y={64} width={136} height={96} rx={8} fill={INK} />
+        {feeds.map((i) => {
+          const x = 140 + (i % 2) * 62;
+          const y = 72 + Math.floor(i / 2) * 42;
+          return (
+            <g key={i}>
+              <rect x={x} y={y} width={58} height={38} rx={4} fill={i === 1 ? p.mainDark : '#2f3448'} />
+              <path d={`M${x + 6} ${y + 32} L${x + 20} ${y + 18} L${x + 30} ${y + 26} L${x + 40} ${y + 14} L${x + 52} ${y + 32} Z`} fill={i === 1 ? p.main : '#4a5068'} />
+              <circle className="ill-blink" style={d(i * 0.4)} cx={x + 50} cy={y + 7} r={3} fill={RED} />
+            </g>
+          );
+        })}
+      </g>
+
+      {/* Hub and the spaces it runs */}
+      <path className="ill-march" d="M200 196 V172 M200 196 L102 228 M200 196 L298 228" stroke={p.main} strokeWidth={2.5} strokeDasharray="6 6" fill="none" />
+      <At x={200} y={196} cls="ill-pulse">
+        <circle r={14} fill={p.main} />
+        <circle r={6} fill={W} />
+      </At>
+      {/* Home */}
+      <At x={92} y={228} cls="ill-float" delay={-0.6}>
+        <path d="M-22 0 L0 -20 L22 0 V22 H-22 Z" fill={W} />
+        <path d="M-26 2 L0 -24 L26 2" fill="none" stroke={p.mainDark} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+        <rect x={-6} y={8} width={12} height={14} fill={p.accent} />
+      </At>
+      {/* Hotel */}
+      <At x={200} y={240} cls="ill-float" delay={-1.6}>
+        <rect x={-20} y={-24} width={40} height={42} rx={3} fill={W} />
+        {Array.from({ length: 6 }, (_, i) => (
+          <rect key={i} x={-14 + (i % 3) * 10} y={-18 + Math.floor(i / 3) * 11} width={7} height={7} rx={1} fill={i === 4 ? p.accent : p.mainLight} />
+        ))}
+        <rect x={-6} y={6} width={12} height={12} fill={p.mainDark} />
+      </At>
+      {/* Office */}
+      <At x={308} y={226} cls="ill-float" delay={-2.4}>
+        <rect x={-16} y={-34} width={32} height={56} rx={3} fill={W} />
+        {Array.from({ length: 8 }, (_, i) => (
+          <rect key={i} x={-10 + (i % 2) * 12} y={-28 + Math.floor(i / 2) * 11} width={8} height={6} rx={1} fill={i === 3 ? p.accent : p.mainLight} />
+        ))}
+      </At>
+      {/* Phone in hand: the app */}
+      <At x={330} y={96} cls="ill-float" delay={-1.2}>
+        <rect x={-18} y={-30} width={36} height={60} rx={7} fill={W} />
+        <rect x={-12} y={-22} width={24} height={14} rx={3} fill={p.main} />
+        <rect x={-12} y={-4} width={11} height={11} rx={3} fill={p.mainLight} />
+        <rect x={1} y={-4} width={11} height={11} rx={3} fill={p.accentLight} />
+        <rect x={-12} y={11} width={24} height={5} rx={2.5} fill={LINE} />
+      </At>
+    </g>
+  );
+}
+
+/** A bag of clothes on a doorstep scale with a swinging needle, the kilos it weighs, a payout coin and
+ *  recycling arrows — ReWear's sell clothes by the KG. */
+export function ClothesScale({ p }) {
+  return (
+    <g>
+      {/* Scale */}
+      <g className="ill-float-sm">
+        <rect x={140} y={150} width={120} height={84} rx={8} fill={W} />
+        <rect x={130} y={140} width={140} height={12} rx={6} fill={p.mainDark} />
+        <circle cx={200} cy={196} r={28} fill={SURF} stroke={LINE} strokeWidth={3} />
+        <path d="M178 196 A22 22 0 0 1 222 196" fill="none" stroke={p.mainLight} strokeWidth={4} />
+        <At x={200} y={196}>
+          <g className="ill-needle">
+            <line x1={0} y1={-20} x2={0} y2={20} stroke="transparent" strokeWidth={3} />
+            <line x1={0} y1={0} x2={0} y2={-20} stroke={RED} strokeWidth={3} strokeLinecap="round" />
+          </g>
+        </At>
+        <circle cx={200} cy={196} r={4} fill={INK} />
+      </g>
+      {/* Bag of clothes */}
+      <At x={200} y={112} cls="ill-bob">
+        <path d="M-34 26 L-28 -14 H28 L34 26 Z" fill={p.main} />
+        <path d="M-14 -14 C-14 -30 14 -30 14 -14" fill="none" stroke={p.mainDark} strokeWidth={4} />
+        <path d="M-18 -4 l8 -10 h20 l8 10 l-5 5 l-3 -2 v14 h-20 v-14 l-3 2 Z" fill={p.accentLight} />
+      </At>
+
+      {/* Weight readout */}
+      <At x={78} y={110} cls="ill-float" delay={-1.4}>
+        <rect x={-36} y={-22} width={72} height={44} rx={8} fill={INK} />
+        <text y={8} textAnchor="middle" fontSize={20} fontWeight={800} fill={p.accentLight} fontFamily="ui-monospace, Menlo, monospace">
+          4.2kg
+        </text>
+      </At>
+      {/* Payout */}
+      <At x={330} y={104} cls="ill-flip">
+        <circle r={26} fill={GOLD} />
+        <circle r={20} fill="none" stroke={GOLD_D} strokeWidth={2.5} />
+        <text y={8} textAnchor="middle" fontSize={22} fontWeight={800} fill={GOLD_D} fontFamily={SANS}>
+          ₹
+        </text>
+      </At>
+      {/* Recycling arrows */}
+      <At x={330} y={210} cls="ill-spin">
+        <path d="M0 -22 A22 22 0 0 1 19 11" fill="none" stroke={p.main} strokeWidth={5} strokeLinecap="round" />
+        <path d="M19 11 A22 22 0 0 1 -19 11" fill="none" stroke={p.accent} strokeWidth={5} strokeLinecap="round" />
+        <path d="M-19 11 A22 22 0 0 1 0 -22" fill="none" stroke={p.mainDark} strokeWidth={5} strokeLinecap="round" />
+        <path d="M-6 -27 L2 -22 L-5 -15" fill="none" stroke={p.mainDark} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+      </At>
+      <At x={74} y={214} cls="ill-float" delay={-2.6}>
+        <path d={TSHIRT} fill={p.mainLight} transform="scale(1.6)" />
+      </At>
+    </g>
+  );
+}
+
+/** A wind turbine turning over a remote site, the supervisor's muster roll ticking off each guard,
+ *  a shift clock and an offline-ready badge — WINDGUARD's every shift, every worker accounted for. */
+export function TurbineRoll({ p }) {
+  const rows = [0, 1, 2, 3];
+  return (
+    <g>
+      {/* Turbine */}
+      <path d="M98 248 L104 120 H112 L118 248 Z" fill={W} />
+      <At x={108} y={116} cls="ill-spin">
+        <circle r={62} fill="none" />
+        {[0, 120, 240].map((a) => (
+          <path key={a} d="M-4 0 C-6 -20 -3 -44 0 -60 C3 -44 6 -20 4 0 Z" fill={W} stroke={LINE} strokeWidth={1} transform={`rotate(${a})`} />
+        ))}
+        <circle r={7} fill={p.main} />
+      </At>
+
+      {/* Muster roll */}
+      <At x={240} y={156} cls="ill-float-sm">
+        <rect x={-62} y={-80} width={124} height={156} rx={8} fill={W} />
+        <rect x={-20} y={-88} width={40} height={14} rx={4} fill={p.mainDark} />
+        <rect x={-48} y={-62} width={56} height={7} rx={3.5} fill={INK} opacity={0.75} />
+        {rows.map((i) => {
+          const y = -38 + i * 26;
+          const present = i !== 2;
+          return (
+            <g key={i}>
+              <circle cx={-40} cy={y} r={9} fill={p.mainLight} />
+              <rect x={-26} y={y - 4} width={44} height={8} rx={4} fill={LINE} />
+              <rect x={26} y={y - 9} width={18} height={18} rx={4} fill={present ? p.main : SURF} stroke={present ? 'none' : LINE} strokeWidth={1.5} />
+              {present && <path className="ill-draw" style={d(i * 0.5)} d={`M30 ${y} l4 4 l7 -8`} fill="none" stroke={W} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />}
+            </g>
+          );
+        })}
+      </At>
+
+      {/* Shift clock */}
+      <At x={340} y={98} cls="ill-float" delay={-1.8}>
+        <circle r={26} fill={W} />
+        <circle r={20} fill="none" stroke={p.mainLight} strokeWidth={3} />
+        <line x1={0} y1={0} x2={0} y2={-13} stroke={INK} strokeWidth={3} strokeLinecap="round" />
+        <g className="ill-spin">
+          <line x1={0} y1={-16} x2={0} y2={16} stroke="transparent" strokeWidth={2} />
+          <line x1={0} y1={0} x2={0} y2={-16} stroke={p.accent} strokeWidth={2} strokeLinecap="round" />
+        </g>
+        <circle r={3} fill={INK} />
+      </At>
+      {/* Works offline */}
+      <At x={340} y={206} cls="ill-pulse">
+        <rect x={-30} y={-18} width={60} height={36} rx={8} fill={p.main} />
+        <path d="M-14 0 a20 20 0 0 1 28 0 M-8 6 a11 11 0 0 1 16 0" fill="none" stroke={W} strokeWidth={3} strokeLinecap="round" />
+        <circle cy={11} r={2.5} fill={W} />
+        <line x1={-12} y1={-10} x2={12} y2={14} stroke={p.accentLight} strokeWidth={3} strokeLinecap="round" />
+      </At>
+    </g>
+  );
+}
+
+/** Two companies joined by a bridge, a deal travelling across it, and the network of partners around
+ *  them — PartnerBridge's discover, connect, negotiate, collaborate. */
+export function BridgeDeal({ p }) {
+  const nodes = [
+    [70, 86],
+    [118, 60],
+    [282, 60],
+    [332, 90],
+  ];
+  return (
+    <g>
+      {/* Partner network */}
+      <path className="ill-march" d="M70 86 L118 60 L200 76 L282 60 L332 90" fill="none" stroke={p.mainLight} strokeWidth={2} strokeDasharray="5 6" />
+      {nodes.map(([x, y], i) => (
+        <circle key={i} className="ill-pulse" style={d(i * 0.4)} cx={x} cy={y} r={7} fill={i % 2 ? p.accent : p.main} />
+      ))}
+      <Avatar x={200} y={76} r={13} bg={p.mainDark} fg={W} />
+
+      {/* Company A */}
+      <At x={92} y={186} cls="ill-float-sm">
+        <rect x={-38} y={-62} width={76} height={110} rx={6} fill={W} />
+        {Array.from({ length: 9 }, (_, i) => (
+          <rect key={i} x={-28 + (i % 3) * 20} y={-50 + Math.floor(i / 3) * 22} width={14} height={12} rx={2} fill={i === 4 ? p.accent : p.mainLight} />
+        ))}
+        <rect x={-10} y={22} width={20} height={26} fill={p.mainDark} />
+      </At>
+      {/* Company B */}
+      <At x={308} y={186} cls="ill-float-sm" delay={-2}>
+        <rect x={-38} y={-62} width={76} height={110} rx={6} fill={W} />
+        {Array.from({ length: 9 }, (_, i) => (
+          <rect key={i} x={-28 + (i % 3) * 20} y={-50 + Math.floor(i / 3) * 22} width={14} height={12} rx={2} fill={i === 2 ? p.accent : p.mainLight} />
+        ))}
+        <rect x={-10} y={22} width={20} height={26} fill={p.mainDark} />
+      </At>
+
+      {/* The bridge */}
+      <path d="M130 196 C170 150 230 150 270 196" fill="none" stroke={p.main} strokeWidth={6} strokeLinecap="round" />
+      <rect x={128} y={196} width={144} height={8} rx={4} fill={p.mainDark} />
+      {[150, 172, 200, 228, 250].map((x) => (
+        <line key={x} x1={x} y1={196} x2={x} y2={x === 200 ? 162 : x === 172 || x === 228 ? 168 : 180} stroke={p.main} strokeWidth={2.5} />
+      ))}
+      {/* Deal crossing it */}
+      <At x={200} y={184} cls="ill-drift">
+        <rect x={-30} y={-14} width={44} height={22} rx={6} fill={W} stroke={p.main} strokeWidth={2} />
+        <path className="ill-draw" d="M-20 -3 l5 5 l9 -9" fill="none" stroke={p.main} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+        <rect x={-4} y={-6} width={12} height={4} rx={2} fill={LINE} />
       </At>
     </g>
   );

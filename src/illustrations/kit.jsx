@@ -55,6 +55,8 @@ export const PALETTES = {
   olive: pal('#777a68', '#4e5043', '#d9dacb', '#f6f5ef', '#e7e6da', '#13140f', '#2a2b23', '#e08a4f', '#f8d3b6'),
   // Payana's laterite red with a coastal teal
   laterite: pal('#b8411f', '#7f2c14', '#f2c8b8', '#fdf3ef', '#f8ddd2', '#1f0c07', '#43190e', '#0e7c6b', '#a6e3d6'),
+  // Nexora's mint with an indigo accent
+  mint: pal('#12a37b', '#0b6e53', '#b4ead8', '#effaf6', '#d3f2e7', '#07150f', '#0f3326', '#6366f1', '#c7d2fe'),
 };
 
 export const d = (s) => ({ animationDelay: `${s}s` });
