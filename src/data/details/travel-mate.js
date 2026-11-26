@@ -32,10 +32,10 @@ import CompareArrowsRoundedIcon from '@mui/icons-material/CompareArrowsRounded';
 // administrator exists only in the browser’s storage). No password was typed and no account was created. In that
 // throwaway profile the demo planner drafted a 3-day Gokarna trip, which was saved, and three sample expenses, a
 // beach checklist and its suggestions were added; nothing left the browser. Weather, countdowns (“In 22 days”) and
-// demo-planner timings depend on the day you visit. The build’s default basemap (keyless CARTO Voyager) now returns
-// an “API KEY REQUIRED” placeholder for every tile, so for the map screenshots only those tile requests were
-// swapped at capture time for standard OpenStreetMap tiles. Markers, routes and the rest of each page are the live
-// build. Sonner toasts were hidden with CSS; the amber “Demo” banner is part of the page and was left in.
+// demo-planner timings depend on the day you visit. The maps use OpenStreetMap tiles since travel-mate 026abd0
+// (CARTO’s basemaps started asking for an API key); the three map screenshots were retaken from the live site after
+// that fix, so every shot is the live build as is. Sonner toasts were hidden with CSS; the amber “Demo” banner is part
+// of the page and was left in.
 const shot = (file) => `/projects/travel-mate/${file}`;
 
 export default {
@@ -230,7 +230,7 @@ export default {
       src: shot('07-route-map.webp'),
       icon: RouteRoundedIcon,
       title: 'Route map',
-      text: 'Day 1’s three stops linked by an OSRM driving route of 7.5 km and 14 minutes, labelled “Source · osrm”, with Optimize stop order and layers for places to see and saved places. Map tiles: OpenStreetMap (see the note in the file header).',
+      text: 'Day 1’s three stops linked by an OSRM driving route of 7.5 km and 14 minutes, labelled “Source · osrm”, with Optimize stop order and layers for places to see and saved places, on OpenStreetMap tiles.',
     },
     {
       src: shot('08-budget.webp'),
