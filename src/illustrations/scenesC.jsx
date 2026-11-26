@@ -1023,3 +1023,133 @@ export function BridgeDeal({ p }) {
     </g>
   );
 }
+
+/** A day-by-day itinerary beside its route on a map, a budget ring, a packing list ticking itself off
+ *  and a plane on its way — TravelMate's whole trip in one place. */
+export function TripPlanner({ p }) {
+  const days = [
+    { y: 96, w: 50 },
+    { y: 128, w: 40 },
+    { y: 160, w: 56 },
+  ];
+  return (
+    <g>
+      {/* Plane crossing */}
+      <At x={200} y={50} cls="ill-drift">
+        <path d="M-18 0 L14 -3 L22 0 L14 3 Z M-4 -1 L-10 -12 L-4 -12 L6 -1 Z M-4 1 L-10 12 L-4 12 L6 1 Z M-16 -1 L-20 -7 L-16 -7 L-12 -1 Z" fill={p.mainDark} />
+      </At>
+      <path d="M120 54 H178" stroke={p.mainLight} strokeWidth={2} strokeDasharray="4 5" />
+
+      {/* Itinerary */}
+      <g className="ill-float-sm">
+        <rect x={60} y={72} width={130} height={150} rx={8} fill={W} />
+        <rect x={72} y={82} width={58} height={7} rx={3.5} fill={INK} opacity={0.75} />
+        <path d="M80 104 V170" stroke={LINE} strokeWidth={2} />
+        {days.map((dd, i) => (
+          <g key={dd.y}>
+            <circle cx={80} cy={dd.y + 8} r={6} fill={i === 1 ? p.accent : p.main} />
+            <rect x={92} y={dd.y} width={dd.w} height={6} rx={3} fill={INK} opacity={0.6} />
+            <rect x={92} y={dd.y + 11} width={dd.w + 26} height={5} rx={2.5} fill={LINE} />
+          </g>
+        ))}
+        <rect x={72} y={190} width={106} height={20} rx={6} fill={p.mainLight} />
+        <rect x={80} y={197} width={48} height={6} rx={3} fill={p.mainDark} />
+      </g>
+
+      {/* Route on a map */}
+      <At x={268} y={148} cls="ill-float" delay={-1.2}>
+        <rect x={-58} y={-58} width={116} height={116} rx={8} fill={W} />
+        <path d="M-58 -14 C-30 -24 -10 6 20 -6 S50 -30 58 -20 M-20 -58 C-14 -20 -26 20 -12 58" stroke={SURF} strokeWidth={8} fill="none" />
+        <path className="ill-march" d="M-34 30 C-20 6 -6 18 6 -2 S30 -22 36 -34" fill="none" stroke={p.main} strokeWidth={3.5} strokeLinecap="round" strokeDasharray="7 7" />
+        <circle cx={-34} cy={30} r={6} fill={p.accent} stroke={W} strokeWidth={2.5} />
+        <circle cx={6} cy={-2} r={5} fill={p.mainLight} stroke={p.main} strokeWidth={2} />
+        <At x={36} y={-30} s={0.7} cls="ill-bounce">
+          <path d={PIN} fill={p.main} />
+          <circle cy={-27} r={6} fill={W} />
+        </At>
+      </At>
+
+      {/* Budget */}
+      <At x={344} y={70} cls="ill-float" delay={-2.2}>
+        <circle r={24} fill={W} />
+        <circle r={17} fill="none" stroke={SURF} strokeWidth={6} />
+        <circle className="ill-draw" r={17} fill="none" stroke={p.accent} strokeWidth={6} strokeLinecap="round" pathLength={1} transform="rotate(-90)" />
+        <text y={4} textAnchor="middle" fontSize={11} fontWeight={800} fill={INK} fontFamily={SANS}>
+          ₹
+        </text>
+      </At>
+
+      {/* Packing list */}
+      <At x={330} y={240} cls="ill-float" delay={-0.6}>
+        <rect x={-38} y={-22} width={76} height={44} rx={8} fill={W} />
+        {[0, 1].map((i) => (
+          <g key={i}>
+            <rect x={-28} y={-13 + i * 15} width={10} height={10} rx={3} fill={p.main} />
+            <path className="ill-draw" style={d(i * 0.6)} d={`M-26 ${-8 + i * 15} l2.5 2.5 l4.5 -5`} fill="none" stroke={W} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+            <rect x={-12} y={-11 + i * 15} width={i ? 30 : 40} height={5} rx={2.5} fill={LINE} />
+          </g>
+        ))}
+      </At>
+    </g>
+  );
+}
+
+/** "You are here" with radar rings pulsing out to the places around it, a neighbourhood-feed bubble
+ *  and a compass — NearMe's everything around you. */
+export function RadarNearby({ p }) {
+  const places = [
+    { x: 128, y: 104, c: p.accent, glyph: 'cup' },
+    { x: 280, y: 96, c: RED, glyph: 'plus' },
+    { x: 296, y: 200, c: p.mainDark, glyph: 'star' },
+    { x: 116, y: 206, c: GOLD_D, glyph: 'cart' },
+  ];
+  const glyph = (g) => {
+    if (g === 'plus') return <path d="M0 -6 V6 M-6 0 H6" stroke={W} strokeWidth={3} strokeLinecap="round" />;
+    if (g === 'star') return <polygon points="0,-7 2,-2 7,-2 3,1.5 4.5,7 0,3.5 -4.5,7 -3,1.5 -7,-2 -2,-2" fill={W} />;
+    if (g === 'cart') return <path d="M-7 -5 H-4 L-2 4 H5 L7 -2 H-3" fill="none" stroke={W} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />;
+    return <path d="M-5 -3 H4 V3 a4 4 0 0 1 -4 4 H-1 a4 4 0 0 1 -4 -4 Z M4 -1 h2 a2 2 0 0 1 0 4 h-2" fill="none" stroke={W} strokeWidth={2} />;
+  };
+  return (
+    <g>
+      {/* Map streets */}
+      <g opacity={0.9}>
+        <path d="M40 150 C120 130 160 170 220 150 S330 120 380 140 M200 40 C190 110 214 190 196 270 M70 70 L330 240" stroke={W} strokeWidth={10} fill="none" strokeLinecap="round" />
+      </g>
+
+      {/* Radar from you */}
+      <At x={204} y={152}>
+        {[0, 1, 2].map((i) => (
+          <circle key={i} className="ill-ping" style={d(i * 0.6)} r={34} fill="none" stroke={p.main} strokeWidth={2.5} />
+        ))}
+        <circle r={20} fill={p.mainLight} opacity={0.6} />
+        <circle r={10} fill={p.main} stroke={W} strokeWidth={4} />
+      </At>
+
+      {/* Places nearby */}
+      {places.map((pl, i) => (
+        <At key={i} x={pl.x} y={pl.y} cls="ill-bounce" delay={-i * 0.4}>
+          <path d={PIN} fill={pl.c} transform="scale(0.85)" />
+          <g transform="translate(0 -23)">{glyph(pl.glyph)}</g>
+        </At>
+      ))}
+
+      {/* Neighbourhood feed */}
+      <At x={336} y={58} cls="ill-float" delay={-1.4}>
+        <path d="M-34 -18 H34 a8 8 0 0 1 8 8 V10 a8 8 0 0 1 -8 8 H-14 L-24 28 L-24 18 H-34 a8 8 0 0 1 -8 -8 V-10 a8 8 0 0 1 8 -8 Z" fill={W} />
+        <circle cx={-26} cy={0} r={7} fill={p.mainLight} />
+        <rect x={-14} y={-7} width={40} height={5} rx={2.5} fill={INK} opacity={0.6} />
+        <rect x={-14} y={3} width={28} height={4} rx={2} fill={LINE} />
+      </At>
+
+      {/* Compass */}
+      <At x={66} y={252}>
+        <circle r={22} fill={W} />
+        <g className="ill-swing">
+          <path d="M0 -16 L5 0 L0 16 L-5 0 Z" fill={MUTE} />
+          <path d="M0 -16 L5 0 L-5 0 Z" fill={RED} />
+        </g>
+        <circle r={3} fill={INK} />
+      </At>
+    </g>
+  );
+}

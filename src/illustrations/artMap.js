@@ -76,6 +76,8 @@ const ART = {
   partnerbridge: art(C.BridgeDeal, 'blue', 'circle', 'lines'),
   windgaurd: art(C.TurbineRoll, 'cyan', 'hills', 'clouds', false),
   nexora: art(C.SpacesHub, 'mint', 'squares', 'sparkle'),
+  'travel-mate': art(C.TripPlanner, 'forest', 'hills', 'clouds'),
+  'near-me': art(C.RadarNearby, 'orange', 'grid', 'dots'),
 };
 
 const CATEGORY_ICON = {

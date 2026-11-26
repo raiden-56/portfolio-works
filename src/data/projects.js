@@ -39,6 +39,34 @@ export const CATEGORIES = [
 
 const raw = [
   {
+    name: "near-me",
+    title: "NearMe",
+    image: null,
+    url: "https://raiden-56.github.io/near-me/",
+    repo: "https://github.com/raiden-56/near-me",
+    source: "GitHub",
+    publishedAt: "2026-11-26",
+    category: "Travel",
+    featured: true,
+    description:
+      "Location-first PWA: nearby places on real OpenStreetMap data, directions, a live neighbourhood feed, deals and events.",
+    tags: ["Maps", "OpenStreetMap", "PWA"],
+  },
+  {
+    name: "travel-mate",
+    title: "TravelMate",
+    image: null,
+    url: "https://raiden-56.github.io/travel-mate/",
+    repo: "https://github.com/raiden-56/travel-mate",
+    source: "GitHub",
+    publishedAt: "2026-11-26",
+    category: "Travel",
+    featured: true,
+    description:
+      "Trip planner for Karnataka getaways: curated places, day-by-day plans, route maps, budget and packing lists.",
+    tags: ["Next.js", "Spring Boot", "Leaflet"],
+  },
+  {
     name: "nexora",
     title: "Nexora",
     image: null,
