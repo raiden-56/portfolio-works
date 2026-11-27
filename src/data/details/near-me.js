@@ -174,7 +174,7 @@ export default {
     { icon: SensorsRoundedIcon, title: 'Check NearMe Live', text: 'See what neighbours and businesses report right now and how much to trust it. Posting or confirming an update needs a sign-in.' },
     { icon: LocalOfferRoundedIcon, title: 'Browse deals and events', text: 'Filter offers by category and distance and events by day or type. Save a deal or mark an event you are interested in.' },
     { icon: BookmarkRoundedIcon, title: 'Save and go offline', text: 'Bookmark places and sort them into collections. Install the app from the install card or Settings so they open without a connection.' },
-    { icon: TerminalRoundedIcon, title: 'Run it yourself', text: 'Clone the repo, run npm install and npm run dev, and copy .env.example to .env.local to change providers, the starting area or connect Supabase. In local mode, Settings → Workspaces opens the business portal and admin area for a device account.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version can switch map and data providers, change the starting area or connect Supabase, and opens the business portal and admin area for an account.' },
   ],
   shortcuts: [{ keys: ['/'], action: 'Open search from any screen (ignored while typing in a field)' }],
 

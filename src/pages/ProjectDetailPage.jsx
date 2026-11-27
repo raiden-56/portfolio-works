@@ -7,7 +7,6 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
@@ -150,19 +149,17 @@ export default function ProjectDetailPage() {
             </Typography>
           </Box>
           <Stack direction="row" sx={{ gap: 1, flexWrap: 'wrap', flexShrink: 0 }}>
-            <Button
-              variant="contained"
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              endIcon={<OpenInNewRoundedIcon />}
-              sx={{ bgcolor: accent, '&:hover': { bgcolor: accent, filter: 'brightness(0.92)' } }}
-            >
-              Live demo
-            </Button>
-            {project.repo && (
-              <Button variant="outlined" color="inherit" href={project.repo} target="_blank" rel="noopener noreferrer" startIcon={<GitHubIcon />} sx={{ borderColor: 'divider' }}>
-                GitHub
+            {/* Only live previews are linked; source code is never linked from the portfolio. */}
+            {project.url && (
+              <Button
+                variant="contained"
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                endIcon={<OpenInNewRoundedIcon />}
+                sx={{ bgcolor: accent, '&:hover': { bgcolor: accent, filter: 'brightness(0.92)' } }}
+              >
+                Live demo
               </Button>
             )}
             <Tooltip title={isFav ? 'Remove from favourites' : 'Add to favourites'}>

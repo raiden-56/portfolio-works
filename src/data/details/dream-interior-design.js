@@ -167,7 +167,6 @@ export default {
     { keys: ['Ctrl', 'D'], action: 'Duplicate' },
     { keys: ['?'], action: 'Shortcuts & tour' },
   ],
-  manual: 'https://github.com/raiden-56/Interior-design/blob/main/docs/USER-MANUAL.md',
 
   screenshots: [
     {

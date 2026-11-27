@@ -172,7 +172,7 @@ export default {
     { icon: ScaleRoundedIcon, title: 'Learn the process', text: 'How it works walks through the eight steps from booking to a second life, and Guidelines lists what is accepted, what isn’t and how to prepare for pickup.' },
     { icon: ShoppingBagRoundedIcon, title: 'Browse the shop', text: 'Shop pre-loved lists the inspected resale pieces. Open one for its condition, size, MRP saving and inspection note; buying needs sign-in, which the preview can’t do.' },
     { icon: BusinessRoundedIcon, title: 'See the B2B and impact pages', text: 'For business shows the graded lots with price per kg, stock and minimum order, and Sustainability shows kilograms diverted, estimated CO₂e and water saved and stock by grade.' },
-    { icon: TerminalRoundedIcon, title: 'Run the full app', text: 'Clone the repo, npm install, copy .env.example to .env, start Postgres with npm run db:local or Docker, then run prisma migrate deploy, npm run db:seed and npm run dev on port 3000.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version runs the Next.js app on PostgreSQL with all eight role apps — customer, pickup, warehouse, admin and more — which the public preview doesn’t include.' },
     { icon: LoginRoundedIcon, title: 'Sign in as each role', text: 'In development the README lists seeded mobile numbers for every role, from customer and collector to warehouse, admin, B2B buyer, recycler and NGO, using a fixed development code.' },
     { icon: ReceiptLongRoundedIcon, title: 'Walk the core flow', text: 'Book a pickup as the customer, weigh it as the collector, approve the valuation, complete the pickup, reconcile the payout as admin and download the receipt, then sort the batch in the warehouse.' },
   ],

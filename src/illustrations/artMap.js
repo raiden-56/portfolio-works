@@ -78,6 +78,7 @@ const ART = {
   nexora: art(C.SpacesHub, 'mint', 'squares', 'sparkle'),
   'travel-mate': art(C.TripPlanner, 'forest', 'hills', 'clouds'),
   'near-me': art(C.RadarNearby, 'orange', 'grid', 'dots'),
+  'visitor-management': art(C.GateBadge, 'sage', 'arch', 'dots'),
 };
 
 const CATEGORY_ICON = {

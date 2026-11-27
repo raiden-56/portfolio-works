@@ -178,7 +178,7 @@ export default {
     { icon: HandshakeRoundedIcon, title: 'Open the workspace', text: 'Partnerships → BrightWave Marketing opens the shared workspace. Go through Messages, Tasks, Milestones and Documents, where one file is marked Internal.' },
     { icon: HistoryEduRoundedIcon, title: 'Agreements and deals', text: 'Agreements shows a referral agreement approved by Northstar and awaiting BrightWave. Deals lists four deals, three of them referrals, with pipeline, attributed and verified revenue.' },
     { icon: VerifiedUserRoundedIcon, title: 'Switch to platform admin', text: 'Use Switch to platform admin in the yellow preview bar to see the admin overview, the verification queue and the other console modules.' },
-    { icon: TerminalRoundedIcon, title: 'Run it for real', text: 'Clone the repo, run npm install, put NEXT_PUBLIC_LOCAL_DEMO=1 in .env.local and npm run dev. The local demo needs no Supabase, saves changes and has four guest personas; connect Supabase for production.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version runs on Supabase (PostgreSQL with Row Level Security) and saves every change; its local demo mode adds four guest personas, and the hosted preview is read-only.' },
   ],
   shortcuts: [
     { keys: ['Enter'], action: 'Send a chat message' },

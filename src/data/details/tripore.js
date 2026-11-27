@@ -33,7 +33,7 @@ export default {
     'Your personal travel memory map — every place you’ve been, every memory you’ve captured and every trip still waiting, on one living map.',
   cover: shot('01-hero.webp'),
   overview: [
-    'Tripore (TravelCanvas, called Travel Diaries in the repo) turns scattered travel history — photos on phones and WhatsApp, wishlists in a notes app, half-planned trips in a group chat — into one map-first record of your life on the road. Each destination is pinned on a world or India map as visited, planned or wishlist, and memories, notes and a Google Drive folder hang off the place they belong to.',
+    'Tripore (TravelCanvas, also called Travel Diaries) turns scattered travel history — photos on phones and WhatsApp, wishlists in a notes app, half-planned trips in a group chat — into one map-first record of your life on the road. Each destination is pinned on a world or India map as visited, planned or wishlist, and memories, notes and a Google Drive folder hang off the place they belong to.',
     'Around that map sit the tools to keep the loop going: India Explorer progress across all 36 states and UTs, travel statistics and a yearly recap, a "What’s Next?" engine that suggests places from your own history, a day-by-day itinerary planner, trips with checklists, budgets and shared expenses, a local-guide marketplace and a shareable public journey page. It is a React + Vite frontend backed by a layered FastAPI service with PostgreSQL, Redis and Celery.',
   ],
   highlights: [
@@ -162,7 +162,6 @@ export default {
     { icon: ShareRoundedIcon, title: 'Share your journey', text: 'Open your Public Journey link from Profile, share a photo album link, or show off your yearly recap.' },
   ],
   shortcuts: [],
-  manual: 'https://github.com/raiden-56/Tripora/blob/main/USER_GUIDE.md',
 
   screenshots: [
     {

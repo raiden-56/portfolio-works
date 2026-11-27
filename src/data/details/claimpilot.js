@@ -174,7 +174,7 @@ export default {
     { icon: AssignmentRoundedIcon, title: 'Follow a claim', text: 'In Claims Management → All Claims, open a claim to see its progress, evidence, communications, service visits and the full status history.' },
     { icon: HistoryEduRoundedIcon, title: 'Prepare a letter', text: 'From a claim, press Generate letter, choose a letter type and tone, and read the draft. Placeholders show what is still missing. Saving and PDF/Word export need the server.' },
     { icon: TrendingUpRoundedIcon, title: 'Escalate and track outcomes', text: 'The Escalation Center shows each level, prepared or filed; Replacements & Refunds tracks the outcome, and Reports & Analytics sums it all up.' },
-    { icon: TerminalRoundedIcon, title: 'Run the real server', text: 'Clone the repo, start PostgreSQL with docker compose -f docker-compose.dev.yml up -d, then migrate, seed and run the API (port 4010) and the web app (port 5320) to use accounts, uploads, OCR and exports.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version runs on its Express API and PostgreSQL: real accounts, uploads, OCR invoice reading, emails and PDF/Word exports, all of which the browser demo leaves out.' },
   ],
   shortcuts: [
     { keys: ['Ctrl / ⌘', 'K'], action: 'Open or close the search and command palette' },

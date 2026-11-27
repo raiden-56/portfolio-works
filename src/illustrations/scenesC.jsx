@@ -1153,3 +1153,66 @@ export function RadarNearby({ p }) {
     </g>
   );
 }
+
+/** An office entrance with its barrier arm lifting, a visitor badge with a QR code, the host's approval
+ *  ping and the visitor log filling in — GateFlow's register, approve, admit and audit. */
+export function GateBadge({ p }) {
+  const log = [0, 1, 2];
+  const qr = [1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1];
+  return (
+    <g>
+      {/* Building and gate */}
+      <g className="ill-float-sm">
+        <rect x={150} y={70} width={110} height={150} rx={6} fill={W} />
+        {Array.from({ length: 6 }, (_, i) => (
+          <rect key={i} x={164 + (i % 3) * 30} y={84 + Math.floor(i / 3) * 30} width={22} height={18} rx={2} fill={p.mainLight} />
+        ))}
+        <rect x={186} y={168} width={38} height={52} rx={3} fill={p.mainDark} />
+        <rect x={198} y={176} width={14} height={4} rx={2} fill={p.accent} />
+      </g>
+      <rect x={100} y={204} width={14} height={30} rx={3} fill={INK} />
+      <At x={107} y={207}>
+        <g className="ill-swing" style={{ transformOrigin: 'left center' }}>
+          <rect x={0} y={-4} width={70} height={8} rx={4} fill={p.accent} />
+          {[14, 34, 54].map((x) => (
+            <rect key={x} x={x} y={-4} width={8} height={8} fill={W} />
+          ))}
+        </g>
+      </At>
+
+      {/* Visitor badge */}
+      <At x={300} y={150} r={6} cls="ill-float" delay={-1.2}>
+        <rect x={-6} y={-70} width={12} height={22} rx={3} fill={p.mainDark} />
+        <rect x={-38} y={-52} width={76} height={104} rx={8} fill={W} />
+        <rect x={-38} y={-52} width={76} height={20} rx={8} fill={p.main} />
+        <rect x={-38} y={-40} width={76} height={8} fill={p.main} />
+        <Avatar x={-16} y={-14} r={12} bg={p.mainLight} fg={W} />
+        <rect x={0} y={-20} width={28} height={5} rx={2.5} fill={INK} opacity={0.7} />
+        <rect x={0} y={-10} width={20} height={4} rx={2} fill={LINE} />
+        {qr.map((on, i) =>
+          on ? <rect key={i} x={-16 + (i % 4) * 8} y={10 + Math.floor(i / 4) * 8} width={7} height={7} rx={1} fill={INK} /> : null,
+        )}
+      </At>
+
+      {/* Host approval ping */}
+      <At x={80} y={128} cls="ill-pop">
+        <rect x={-40} y={-24} width={80} height={48} rx={10} fill={W} />
+        <rect x={-30} y={-14} width={34} height={5} rx={2.5} fill={INK} opacity={0.7} />
+        <rect x={-30} y={4} width={28} height={12} rx={6} fill={p.main} />
+        <rect x={2} y={4} width={28} height={12} rx={6} fill={SURF} />
+        <circle cx={32} cy={-16} r={6} fill={RED} />
+      </At>
+
+      {/* Visitor log */}
+      <At x={326} y={236} cls="ill-float" delay={-2.4}>
+        <rect x={-48} y={-24} width={96} height={44} rx={8} fill={W} />
+        {log.map((i) => (
+          <g key={i}>
+            <circle cx={-36} cy={-12 + i * 12} r={3.5} fill={i === 2 ? p.accent : p.main} />
+            <rect className={i === 2 ? 'ill-type' : undefined} x={-28} y={-14 + i * 12} width={i === 1 ? 44 : 60} height={4} rx={2} fill={LINE} />
+          </g>
+        ))}
+      </At>
+    </g>
+  );
+}

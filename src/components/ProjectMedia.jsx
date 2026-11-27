@@ -129,7 +129,7 @@ export default function ProjectMedia({
         )}
       </Box>
       {showActions && <QuickActions project={project} />}
-      {showVisit && (
+      {showVisit && project.url && (
         <Box sx={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none', '& > *': { pointerEvents: 'auto' } }}>
           <VisitButton project={project} />
         </Box>

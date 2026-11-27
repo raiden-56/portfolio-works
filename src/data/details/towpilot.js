@@ -164,7 +164,7 @@ export default {
     { icon: ShareLocationRoundedIcon, title: 'Track the truck', text: 'Open Bookings → the active car tow to see the truck on the map, the ETA, your driver, and the pickup and handover codes.' },
     { icon: ChecklistRoundedIcon, title: 'Work the job as a driver', text: 'Exit and re-enter as the Driver. Open job shows the recovery checklist with the current step highlighted; the Safety button stays in the corner.' },
     { icon: DashboardRoundedIcon, title: 'Run operations', text: 'Exit and choose Administrator. The Overview and Dispatch centre show live operations; Incidents & escalations lets you acknowledge or resolve flagged jobs.' },
-    { icon: TerminalRoundedIcon, title: 'Run the full stack', text: 'For real OTP sign-in, payments and live updates, clone the repo, run npm run db:local, db:deploy and db:seed, then dev:api and dev:web. Sandbox adapters stand in for SMS and payments.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version adds real OTP sign-in, payments and live updates on its API and PostgreSQL, with sandbox adapters standing in for SMS and payments.' },
   ],
   shortcuts: [
     { keys: ['Ctrl', 'Enter'], action: 'Send a support-ticket reply' },

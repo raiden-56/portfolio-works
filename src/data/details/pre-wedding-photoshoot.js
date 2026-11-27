@@ -174,7 +174,7 @@ export default {
     { icon: LoginRoundedIcon, title: 'Continue as a guest', text: 'Press Client gallery in the header. Instead of a sign-in form, pick the studio dashboard, the couple’s dashboard, a private gallery or Photo Grid Studio.' },
     { icon: DashboardRoundedIcon, title: 'Walk the studio side', text: 'In the studio dashboard, read the overview, open Bookings for the inquiry pipeline, then Galleries → Aarav & Ananya for the eight-tab workspace.' },
     { icon: FavoriteRoundedIcon, title: 'Be the couple', text: 'Open the private gallery, press View 34 photographs, switch albums, open a photo in the lightbox and try Selections, Slideshow and Share.' },
-    { icon: TerminalRoundedIcon, title: 'Run the real app', text: 'Clone the repo, copy .env.example, run npm run db:local for an embedded PostgreSQL, then prisma db push, npm run db:seed and npm run dev on port 3100 to sign in and save.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version runs on PostgreSQL with Prisma: studio sign-in, bookings, uploads, payments and saving, which the static demo can only show.' },
   ],
   shortcuts: [
     { keys: ['←', '→'], action: 'Previous or next photo in the portfolio and gallery lightboxes and the slideshow' },

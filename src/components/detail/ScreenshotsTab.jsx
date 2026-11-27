@@ -60,7 +60,7 @@ export default function ScreenshotsTab({ project, details, accent }) {
           image, caption and thumbnails all fit on one screen without scrolling. */}
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: { xs: 2, md: 2.5 }, alignItems: 'stretch' }}>
         <BrowserFrame
-          url={project.url.replace('https://', '')}
+          url={project.url ? project.url.replace('https://', '') : 'localhost'}
           sx={{ flex: '0 1 auto', width: { lg: `min(100%, calc((100svh - ${RESERVED}px) * 1440 / 770))` } }}
         >
           <Box

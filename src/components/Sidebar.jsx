@@ -18,7 +18,6 @@ import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
@@ -34,8 +33,6 @@ import {
   toggleFavoritesOnly,
   toggleTheme,
 } from '../store/worksSlice';
-
-const GITHUB = 'https://github.com/raiden-56';
 
 function Brand() {
   return (
@@ -177,11 +174,6 @@ function SidebarContent({ onNavigate }) {
           © {new Date().getFullYear()} Ganesh Mesta
         </Typography>
         <Stack direction="row">
-          <Tooltip title="GitHub profile">
-            <IconButton size="small" component="a" href={GITHUB} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-              <GitHubIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
           <Tooltip title="Hidden projects">
             <IconButton size="small" onClick={() => dispatch(setHiddenDialogOpen(true))} aria-label="Manage hidden projects">
               <Badge badgeContent={hiddenCount} color="secondary" max={99}>

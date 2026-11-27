@@ -24,7 +24,7 @@ function Fact({ label, children }) {
 
 export default function GeneralTab({ project, details, accent }) {
   const [copied, setCopied] = useState(false);
-  const host = project.url.replace('https://', '');
+  const host = project.url?.replace('https://', '');
 
   const copy = async () => {
     try {
@@ -90,24 +90,21 @@ export default function GeneralTab({ project, details, accent }) {
             At a glance
           </Typography>
           <Fact label="Live site">
-            <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'flex-end', minWidth: 0 }}>
-              <Link href={project.url} target="_blank" rel="noopener noreferrer" noWrap sx={linkSx}>
-                {host}
-              </Link>
-              <Tooltip title={copied ? 'Copied!' : 'Copy link'}>
-                <IconButton size="small" onClick={copy} aria-label="Copy link" sx={{ mr: -0.75 }}>
-                  {copied ? <CheckRoundedIcon fontSize="inherit" /> : <ContentCopyRoundedIcon fontSize="inherit" />}
-                </IconButton>
-              </Tooltip>
-            </Stack>
+            {project.url ? (
+              <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'flex-end', minWidth: 0 }}>
+                <Link href={project.url} target="_blank" rel="noopener noreferrer" noWrap sx={linkSx}>
+                  {host}
+                </Link>
+                <Tooltip title={copied ? 'Copied!' : 'Copy link'}>
+                  <IconButton size="small" onClick={copy} aria-label="Copy link" sx={{ mr: -0.75 }}>
+                    {copied ? <CheckRoundedIcon fontSize="inherit" /> : <ContentCopyRoundedIcon fontSize="inherit" />}
+                  </IconButton>
+                </Tooltip>
+              </Stack>
+            ) : (
+              <Box component="span" sx={{ color: 'text.secondary' }}>Not hosted publicly</Box>
+            )}
           </Fact>
-          {project.repo && (
-            <Fact label="Source code">
-              <Link href={project.repo} target="_blank" rel="noopener noreferrer" noWrap sx={{ ...linkSx, display: 'block' }}>
-                {project.repo.replace('https://github.com/', '')}
-              </Link>
-            </Fact>
-          )}
           <Fact label="Released">{formatDate(project.publishedAt)}</Fact>
           <Fact label="Category">{project.category}</Fact>
           <Fact label="Deployed from">{project.source}</Fact>

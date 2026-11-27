@@ -160,7 +160,7 @@ export default {
     { icon: HowToRegRoundedIcon, title: 'Respond as a backup', text: 'Open Work Handovers → Assigned to me to see work others have handed to you. Open one to accept or decline it and update its tasks.' },
     { icon: FactCheckRoundedIcon, title: 'Decide as a manager', text: 'Sign out and choose Rohan. Leave Approvals lists pending requests with risk flags; open one to read the insights, then approve, reject or request changes.' },
     { icon: PolicyRoundedIcon, title: 'Configure as HR', text: 'Sign in as Ananya to manage employees, leave policies, balances and holidays, and use Settings → Excel workbook to download the data as .xlsx.' },
-    { icon: TerminalRoundedIcon, title: 'Run the real server', text: 'Clone the repo and run npm install and npm run dev. The API creates server/data/LeaveFlow.xlsx with demo data on first start, and the web app runs on localhost:5180.' },
+    { icon: TerminalRoundedIcon, title: 'Beyond the demo', text: 'The full version runs a Node API that keeps everything in a real Excel workbook on the server, with demo data created on first start, instead of in your browser.' },
   ],
   shortcuts: [],
 
